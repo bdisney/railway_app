@@ -16,7 +16,7 @@ before_action :set_route, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    @route = Route.new
+    @route = Route.new(route_params)
     if @route.save
       redirect_to @route, notice: 'Route was successfully created.'
     else
@@ -39,11 +39,11 @@ before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   private
 
-  def route_params
-    params.require(:route).permit(:name)
-  end
-
   def set_route
     @route = Route.find(params[:id])
+  end
+
+  def route_params
+    params.require(:route).permit(:name)
   end
 end
