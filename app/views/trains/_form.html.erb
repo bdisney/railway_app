@@ -1,3 +1,5 @@
+
+
 <%= form_for(@train) do |f| %>
   <%= render 'shared/errors_messages', resource: @train %>
 
@@ -6,12 +8,21 @@
     <%= f.text_field :number %>
   </div>
 
-  <div class="field">
-      <%= f.label :current_station %>
-      <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title %>
-  </div>
+  <br />
+
+  <%= f.select :current_station_id, RailwayStation.all.map{ |station| [ "#{station.title}", station.id ] }, {prompt: "Select station"}, class: "mdb-select colorful-select dropdown-info" %>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+  // Material Select Initialization
+  $(document).ready(function() {
+    $('.mdb-select').material_select();
+  });
+</script>
+
+
+
