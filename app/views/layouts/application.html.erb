@@ -27,6 +27,7 @@
    
 </head>
 <body>
+
   <header>
       <!--Navbar-->
       <nav class="navbar fixed-top navbar-toggleable-md scrolling-navbar navbar-dark bg-primary">
@@ -65,12 +66,16 @@
       </nav>
       <!--/.Navbar-->
   </header>
-  
+
+
   <main>
       <div class="container">
           <%= yield %>
       </div>
   </main>
+
+
+
 
   <!-- SCRIPTS -->
 
@@ -82,6 +87,10 @@
 
     <!-- MDB core JavaScript -->
     <%= javascript_include_tag 'mdb.min.js' %>
+
+    <script>
+        new WOW().init();
+    </script>
 
 </body>
 </html>
