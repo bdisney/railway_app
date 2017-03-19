@@ -14,7 +14,9 @@
         <p>Route isn't set</p>
     <% end %>
   </td>
-  <td><%= link_to 'Show', train %></td>
-  <td><%= link_to 'Edit', edit_train_path(train) %></td>
-  <td><%= link_to 'Destroy', train, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+  <td>
+    <a class="blue-text" href="<%= train_path(train) %>"><i class="fa fa-eye"></i></a>
+    <a class="teal-text" href="<%= edit_train_path(train) %>" rel="nofollow"><i class="fa fa-pencil"></i></a>
+    <a class="red-text" href="<%= train_path(train) %>"  data-method="delete" rel="nofollow" data-confirm="Are you sure?"><i class="fa fa-times"></i></a>
+  </td>
 </tr>
