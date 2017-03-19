@@ -10,18 +10,11 @@
 
   <br />
 
-  <%= f.select :current_station_id, RailwayStation.all.map{ |station| [ "#{station.title}", station.id ] }, {prompt: "Select station"}, class: "mdb-select colorful-select dropdown-info" %>
+  <%= f.select :current_station_id, RailwayStation.all.map{ |station| [ "#{station.title}", station.id ] }, {prompt: "Select station"}, class: "mdb-select colorful-select dropdown-warning" %>
 
-  <%= f.select :route_id, Route.all.map{ |route| [ "#{route.name}", route.id ] }, {prompt: "Select route"}, class: "mdb-select colorful-select dropdown-info" %>
+  <%= f.select :route_id, Route.all.map{ |route| [ "#{route.name}", route.id ] }, {prompt: "Select route"}, class: "mdb-select colorful-select dropdown-warning" %>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-
-<script>
-  // Material Select Initialization
-  $(document).ready(function() {
-    $('.mdb-select').material_select();
-  });
-</script>
