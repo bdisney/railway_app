@@ -15,6 +15,24 @@
 </p>
 
 <p>
+  <strong>Carriages ans Seats by Category:</strong>
+  <ul>
+    <% @train.capacity_by_categories.each do |key, value| %>
+    <br />
+        <li>
+          <strong><%= "#{Carriage::CATEGORIES[key]}: " %></strong>
+
+          <ul class="list-group text-muted">
+            <li class="list-group-item justify-content-between">Carriages <span class="badge badge-primary badge-pill"><%= "#{value[:carriages]}" %></span></li>
+            <li class="list-group-item justify-content-between">Top seats <span class="badge badge-primary badge-pill"><%= "#{value[:top_seats]}" %></span></li>
+            <li class="list-group-item justify-content-between">Bottom seats <span class="badge badge-primary badge-pill"><%= "#{value[:bottom_seats]}" %></span></li>
+          </ul>
+       </li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
   <strong>Current station:</strong>
   <% if @train.current_station.present? %>
       <%= link_to @train.current_station.title, @train.current_station %>
