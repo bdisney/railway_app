@@ -44,6 +44,6 @@ before_action :set_route, only: [:show, :edit, :update, :destroy]
   end
 
   def route_params
-    params.require(:route).permit(:name)
+    params.require(:route).permit(:name, railway_station_ids: [])
   end
 end

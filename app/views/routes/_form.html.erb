@@ -6,7 +6,19 @@
     <%= f.text_field :name %>
   </div>
 
- <div class="actions">
+  <br/>
+   
+  <%= f.label "Stations in route" %>
+  <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, { multiple: true, class: "mdb-select colorful-select dropdown-warning" } %>
+
+<div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+  // Material Select Initialization
+  $(document).ready(function() {
+    $('.mdb-select').material_select();
+  });
+</script>
