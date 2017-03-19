@@ -21,12 +21,13 @@
     <br />
         <li>
           <strong><%= "#{Carriage::CATEGORIES[key]}: " %></strong>
-
+          <div class="col-md-4"><br>
           <ul class="list-group text-muted">
             <li class="list-group-item justify-content-between">Carriages <span class="badge badge-primary badge-pill"><%= "#{value[:carriages]}" %></span></li>
             <li class="list-group-item justify-content-between">Top seats <span class="badge badge-primary badge-pill"><%= "#{value[:top_seats]}" %></span></li>
             <li class="list-group-item justify-content-between">Bottom seats <span class="badge badge-primary badge-pill"><%= "#{value[:bottom_seats]}" %></span></li>
           </ul>
+          </div>
        </li>
     <% end %>
   </ul>

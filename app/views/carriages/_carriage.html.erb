@@ -1,0 +1,15 @@
+<tr>
+
+
+  <td><%= link_to carriage.train.number, carriage.train %></td>
+  <td><%= carriage.category_label %></td>
+  <td><%= carriage.top_seats %></td>
+  <td><%= carriage.bottom_seats %></td>
+
+  <td>
+    <a class="blue-text" href="<%= carriage_path(carriage) %>"><i class="fa fa-eye"></i></a>
+    <a class="teal-text" href="<%= edit_carriage_path(carriage) %>" rel="nofollow"><i class="fa fa-pencil"></i></a>
+    <a class="red-text" href="<%= carriage_path(carriage) %>"  data-method="delete" rel="nofollow" data-confirm="Are you sure?"><i class="fa fa-times"></i></a>
+  </td>
+
+</tr>

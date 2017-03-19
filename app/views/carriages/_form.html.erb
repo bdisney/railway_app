@@ -1,0 +1,21 @@
+<%= form_for(@carriage) do |f| %>
+    <%= render 'shared/errors_messages', resource: @carriage %>
+
+    <%= f.collection_select :train_id, Train.all, :id, :number, {prompt: "Select train number"}, { class: "mdb-select colorful-select dropdown-warning" } %>
+  
+    <%= f.select :category, Carriage.categories, {prompt: "Select category"}, {class: "mdb-select colorful-select dropdown-warning" } %>
+
+    <div class="field">
+      <%= f.label :top_seats %>
+      <%= f.text_field :top_seats %>
+    </div>
+
+    <div class="field">
+      <%= f.label :bottom_seats %>
+      <%= f.text_field :bottom_seats %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
