@@ -11,7 +11,7 @@ class Train < ActiveRecord::Base
 
     Carriage::CATEGORIES.each_key { |key| capacity[key] = { carriages: 0, top_seats: 0, bottom_seats: 0 } }
     
-    wagons.each do |wagon|
+    carriages.each do |carriage|
       category = carriage.category.to_sym
       capacity[category][:carriages] += 1
       capacity[category][:top_seats] += carriage.top_seats
@@ -19,6 +19,6 @@ class Train < ActiveRecord::Base
     end
 
     capacity
-    
+
   end
 end
