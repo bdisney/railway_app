@@ -16,7 +16,7 @@ class CarriagesController < ApplicationController
   end
 
   def create
-    @carriage = Carriage.new
+    @carriage = Carriage.new(carriage_params)
 
     if @carriage.save
       redirect_to @carriage, notice: 'Carriage was successfully created.'
