@@ -8,17 +8,19 @@
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @carriage.category_label %>
+  <strong>Type:</strong>
+  <%= @carriage.type_label %>
+</p>
+
+<p>
+   <strong>Carriage number:</strong>
+  <%= @carriage.number %>
 </p>
 
 <p>
   <strong>Seats:</strong>
   <div class="col-md-4">
-    <ul class="list-group text-muted">
-      <li class="list-group-item justify-content-between">Top <span class="badge badge-primary badge-pill"><%= @carriage.top_seats  %></span></li>
-      <li class="list-group-item justify-content-between">Bottom <span class="badge badge-primary badge-pill"><%= @carriage.bottom_seats %></span></li>
-    </ul>
+   <%= render "seats_#{@carriage.type.underscore}", carriage: @carriage %>
   </div>
 </p>
 
