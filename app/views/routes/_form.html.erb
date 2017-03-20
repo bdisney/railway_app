@@ -1,15 +1,10 @@
 <%= form_for(@route) do |f| %>
   <%= render 'shared/errors_messages', resource: @route %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
   <br/>
    
-  <%= f.label "Stations in route" %>
-  <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, { multiple: true, class: "mdb-select colorful-select dropdown-warning" } %>
+  <%= f.label "Add stations to the Route:" %>
+  <%= f.collection_select :railway_station_ids, RailwayStation.all.ordered_by_title, :id, :title, {}, { multiple: true, class: "mdb-select colorful-select dropdown-warning" } %>
 
 <div class="actions">
     <%= f.submit %>

@@ -1,18 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h4>Route</h4>
+<h4><strong class="text-muted">Route:</strong> <strong><%= @route.name %></strong></h4>
+
 <p>
-  <strong>Name:</strong>
-  <%= @route.name %>
+  <strong class="text-muted">Railway stations:</strong>
+  <%= render 'stations', stations: @route.railway_stations.ordered %>
 </p>
 
 <p>
-  <strong>Railway stations:</strong>
-  <%= render 'shared/resource_list', resource_list: @route.railway_stations, attr: :title, empty_text: 'There no stations in route' %>
-</p>
-
-<p>
-  <strong>List of trains on route:</strong>
+  <strong class="text-muted">List of trains on route:</strong>
   <%= render 'shared/resource_list', resource_list: @route.trains, attr: :number, empty_text: 'There no trains on route' %>
 </p>
 
