@@ -6,7 +6,16 @@
 </p>
 
 <p>
-  <strong>Route</strong>
+  <strong>Currnet Station</strong>
+  <% if @train.current_station.present? %>
+      <%= link_to @train.current_station.title, @train.current_station %>
+  <% else %>
+      Current station isn't set
+  <% end %>
+</p>
+
+<p>
+  <strong>Route:</strong>
   <% if @train.route.present? %>
       <%= link_to @train.route.name, @train.route %>
   <% else %>
@@ -14,33 +23,53 @@
   <% end %>
 </p>
 
-<p>
-  <strong>Carriages ans Seats by Category:</strong>
-  <ul>
-    <% @train.capacity_by_categories.each do |key, value| %>
-    <br />
-        <li>
-          <strong><%= "#{Carriage::CATEGORIES[key]}: " %></strong>
-          <div class="col-md-4"><br>
-          <ul class="list-group text-muted">
-            <li class="list-group-item justify-content-between">Carriages <span class="badge badge-primary badge-pill"><%= "#{value[:carriages]}" %></span></li>
-            <li class="list-group-item justify-content-between">Top seats <span class="badge badge-primary badge-pill"><%= "#{value[:top_seats]}" %></span></li>
-            <li class="list-group-item justify-content-between">Bottom seats <span class="badge badge-primary badge-pill"><%= "#{value[:bottom_seats]}" %></span></li>
-          </ul>
-          </div>
-       </li>
-    <% end %>
-  </ul>
-</p>
 
-<p>
-  <strong>Current station:</strong>
-  <% if @train.current_station.present? %>
-      <%= link_to @train.current_station.title, @train.current_station %>
-  <% else %>
-      Station isn't set
-  <% end %>
-</p>
+<h2>Carriages:</h2>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Number</th>
+      <th>Type</th>
+      <th>Seats</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @train.ordered_carriages.each do |carriage| %>
+        <tr>
+          <td><%= link_to carriage.number, carriage_path(carriage) %></td>
+          <td><%= carriage.type_label %></td>
+          <td><%= render "carriage/seats_#{carriage.type.underscore}", carriage: carriage %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h2>Seats count by type:</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Carriage type</th>
+    <th>Seat type</th>
+    <th>Count</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% Carriage::TYPES.each do |carriage_type, carriage_label| %>
+      <% Carriage::SEATS_TYPES.each do |seats_type, seats_label| %>
+          <% count = @train.capacity_by_type(carriage_type, seats_type) %>
+          <% if count > 0 %>
+            <tr>
+              <td><%= carriage_label %></td>
+              <td><%= seats_label %></td>
+              <td><%= count %></td>
+            </tr>
+          <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
