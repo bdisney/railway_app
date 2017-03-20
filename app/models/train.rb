@@ -6,19 +6,11 @@ class Train < ActiveRecord::Base
 
   validates :number, presence: true
 
-  def capacity_by_categories
-    capacity = {}
+  def capacity_by_type(carriage_type, seat_type)
+    Carriage.where(type: carriage_type).sum(seat_type) || 0
+  end
 
-    Carriage::CATEGORIES.each_key { |key| capacity[key] = { carriages: 0, top_seats: 0, bottom_seats: 0 } }
-    
-    carriages.each do |carriage|
-      category = carriage.category.to_sym
-      capacity[category][:carriages] += 1
-      capacity[category][:top_seats] += carriage.top_seats
-      capacity[category][:bottom_seats] += carriage.bottom_seats
-    end
-
-    capacity
-
+  def ordered_carriages
+    self.order_from_tail ? carriages.ordered.reverse_order : carriages.ordered
   end
 end
