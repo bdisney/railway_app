@@ -16,18 +16,22 @@ class CarriagesController < ApplicationController
   end
 
   def create
-    @carriage = Carriage.new(carriage_params)
-
-    if @carriage.save
-      redirect_to @carriage, notice: 'Carriage was successfully created.'
+    if Carriage::TYPES.key?(params[:carriage][:type].to_sym)
+      carriage_class = params[:carriage][:type].constantize
+      @carriage = carriage_class.new(carriage_params(carriage_class))
+      if @carriage.save
+        redirect_to carriage_path(@carriage), notice: 'Carriage was successfully created.'
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_carriage_path(@carriage), notice: 'Something wrong.'
     end
   end
 
   def update
-    if @carriage.update(carriage_params)
-      redirect_to @carriage, notice: 'Carriage was successfully updated.'
+    if @carriage.update(carriage_params(@carriage.class))
+      redirect_to carriage_path(@carriage), notice: 'Carriage was successfully updated.'
     else
       render :edit
     end
@@ -35,13 +39,13 @@ class CarriagesController < ApplicationController
 
   def destroy
     @carriage.destroy
-    redirect_to @carriages_path, notice: 'Carriage was successfully deleted.'  
+    redirect_to carriages_path, notice: 'Carriage was successfully deleted.'  
   end
 
   private
 
-  def carriage_params
-    params.require(:carriage).permit(:category, :top_seats, :bottom_seats, :train_id)
+  def carriage_params(carriage_class)
+    params.require(:carriage).permit(carriage_class.permited_params)
   end
 
   def set_carriage
