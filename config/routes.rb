@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :trains
-  resources :railway_stations
-  resources :routes do
+  resources :railway_stations do
     patch :update_station_place_in_route, on: :member
   end
+  resources :routes 
   resources :carriages
 
   # The priority is based upon order of creation: first created -> highest priority.

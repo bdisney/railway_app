@@ -33,6 +33,16 @@ class RailwayStationsController < ApplicationController
     end
   end
 
+  def update_station_place_in_route
+    @railway_stations_route = RailwayStationsRoute.find(stations_route_params[:id])
+
+    if @railway_stations_route.update(stations_route_params)
+     redirect_to @railway_stations_route.route, notice: 'Stations in route was successfully reordered.'
+    else
+      redirect_to @railway_stations_route.route, alert: 'Stations in route was not reordered.'
+    end
+  end
+
   def destroy
     @railway_station.destroy
     redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.'
@@ -47,5 +57,9 @@ class RailwayStationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def railway_station_params
       params.require(:railway_station).permit(:title)
+    end
+
+    def stations_route_params
+      params.require(:railway_stations_route).permit(:position, :id)
     end
 end
