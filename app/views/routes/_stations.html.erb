@@ -1,0 +1,48 @@
+<table>
+  <thead>
+    <tr>
+      <th>Station</th>
+      <th>Position</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% stations.each do |station| %>
+      <tr>
+        <td><%= link_to station.title, station %></td>
+        <td>
+          <%= form_for(station.route_assignment(@route.id),  method: 'patch', url: {action: 'update_station_place_in_route'}) do |f| %>
+              <%= f.hidden_field :id %>
+              <%= f.text_field :position %>
+              <td><%= f.submit 'Reorder' %></td>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 
+
+
+<!-- Horizontal Steppers -->
+<div class="row">
+    <div class="col-md-12">
+        <!-- Stepers Wrapper -->
+        <ul class="stepper stepper-horizontal">
+        <% stations.each do |station| %>
+        <li class="completed">
+        <a href="<%= railway_station_path(station) %>">
+                    <span class="circle" ><%= station.route_assignment(@route.id).position %></span>
+                    <span class="label"><%=  station.title %></span>
+                </a>
+            </li>
+            <% end %>
+        </ul>
+        <!-- /.Stepers Wrapper -->
+    </div>
+</div>
+<!-- /.Horizontal Steppers -->
+
+
+
+
+
+
