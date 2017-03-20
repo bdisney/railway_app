@@ -3,11 +3,11 @@ class Route < ActiveRecord::Base
   has_many :railway_stations_routes
   has_many :railway_stations, through: :railway_stations_routes
 
-  before_validation :set_name
-  before_create :order_stations
-
   validates :name, presence: true
   validate :stations_count
+
+  before_validation :set_name
+  before_create :order_stations
 
   private
 

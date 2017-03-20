@@ -6,15 +6,16 @@
   <thead class="table-inverse text-center">
   <tr>
     <th class="text-center">Train</th>
-    <th class="text-center">Category</th>
-    <th class="text-center">Top Seats</th>
-    <th class="text-center">Bottom Seats</th>
+    <th class="text-center">Type</th>
+    <th class="text-center">Number</th>
     <th colspan="3" class="text-center">Actions</th>
   </tr>
   </thead>
 
   <tbody>
-    <%= render @carriages %>
+  <% @carriages.ordered_by_train.each do |carriage| %>
+    <%= render 'carriage', carriage: carriage %>
+  <% end %>
   </tbody>
 </table>
 

@@ -14,6 +14,12 @@
 
   <%= f.select :route_id, Route.all.map{ |route| [ "#{route.name}", route.id ] }, {prompt: "Select route"}, class: "mdb-select colorful-select dropdown-warning" %>
 
+   <div class="field">
+      
+      <%= f.check_box :order_from_tail %>
+      <%= f.label :order_from_tail %>
+    </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,19 +1,39 @@
-<%= form_for(@carriage) do |f| %>
+<%= form_for(carriage.becomes(Carriage)) do |f| %>
     <%= render 'shared/errors_messages', resource: @carriage %>
 
-    <%= f.collection_select :train_id, Train.all, :id, :number, {prompt: "Select train number"}, { class: "mdb-select colorful-select dropdown-warning" } %>
+    <% f.object = @carriage.becomes(@carriage.class) %>
+
+    <div class="field">
+      
+      <%= f.select :type, Carriage.types, {prompt: "Select type"}, {class: "mdb-select colorful-select dropdown-warning" } %>
+    </div>
+
+    <%= f.collection_select :train_id, Train.all, :id, :number, {prompt: "Select train id"}, { class: "mdb-select colorful-select dropdown-warning" } %>
   
-    <%= f.select :category, Carriage.categories, {prompt: "Select category"}, {class: "mdb-select colorful-select dropdown-warning" } %>
-
-    <div class="field">
-      <%= f.label :top_seats %>
+      
       <%= f.text_field :top_seats %>
+<%= f.label :top_seats %>
+
+      
+      <%= f.text_field :bottom_seats %>
+      <%= f.label :bottom_seats %>
+
+      
+     <%= f.text_field :side_top_seats %>
+<%= f.label :side_top_seats %>
+
+    <div class="field">
+      
+      <%= f.text_field :side_bottom_seats %>
+      <%= f.label :side_bottom_seats %>
     </div>
 
     <div class="field">
-      <%= f.label :bottom_seats %>
-      <%= f.text_field :bottom_seats %>
+      
+      <%= f.text_field :seats %>
+      <%= f.label :seats %>
     </div>
+ 
 
     <div class="actions">
       <%= f.submit %>
