@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class User < ActiveRecord::Base
   has_many :tickets
 
   validates :last_name, presence: true

@@ -12,9 +12,9 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      redirect_to root_path
+      redirect_to root_path, notice: 'Thank you!'
     else
-      render :buy
+      render :buy, notice: 'Something wrong'
     end
   end
 
