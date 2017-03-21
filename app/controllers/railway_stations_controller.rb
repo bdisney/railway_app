@@ -36,8 +36,8 @@ class RailwayStationsController < ApplicationController
   def update_station_place_in_route
     @route = Route.find(params[:route_id])
 
-    if @railway_station.update_station_place_in_route(@route, params[:position])
-      redirect_to @route, notice: 'Stations in route was successfully reordered.'
+    if @railway_station.update_station_place_in_route(@route, params[:position], params[:arrival_time], params[:departure_time])
+      redirect_to @route, notice: 'Stations in route was successfully updated.'
     else
       redirect_to @route, notice: 'Stations in route was not reordered.'
     end
