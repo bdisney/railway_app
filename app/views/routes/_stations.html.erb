@@ -13,8 +13,11 @@
           <%= form_tag(update_station_place_in_route_railway_station_path(station), method: :patch) do %>
           <%= hidden_field_tag :route_id, @route.id %>
               
-          <%= number_field_tag :position, station.position_in(@route) %>
-          <td><%= submit_tag 'Reorder' %></td>
+          <%= number_field_tag :position, station.within_route(@route, :position) %>
+          <%= time_field_tag :arrival_time, station.within_route(@route, :arrival_time), placeholder: 'arrival time' %>
+          <%= time_field_tag :departure_time, station.within_route(@route, :departure_time), placeholder: 'departure time' %>
+          <%= submit_tag 'Reorder' %>
+          
           <% end %>
         </td>
       </tr>
@@ -31,7 +34,7 @@
         <% stations.each do |station| %>
         <li class="completed">
         <a href="<%= railway_station_path(station) %>">
-                    <span class="circle" ><%= station.position_in(@route) %></span>
+                    <span class="circle" ><%= station.within_route(@route, :position) %></span>
                     <span class="label"><%=  station.title %></span>
                 </a>
             </li>
