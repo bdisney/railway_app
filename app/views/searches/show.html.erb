@@ -1,6 +1,7 @@
 <h4>Search tickets</h4>
 
 <%= form_for(@search, method: :post, url: search_path) do |f| %>
+    <%= render 'shared/errors_messages', resource: @search %>
 
     <div class="row">
         <div class="col-md-6">
