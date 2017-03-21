@@ -26,12 +26,14 @@
 
 <h2>Carriages:</h2>
 <div>
-  <table>
+  <span><%= link_to 'Add carriage', new_train_carriage_path(@train) %></p></span>
+  <table class="table">
     <thead>
     <tr>
       <th>Number</th>
       <th>Type</th>
       <th>Seats</th>
+      <th colspan="3">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -39,7 +41,10 @@
         <tr>
           <td><%= link_to carriage.number, carriage_path(carriage) %></td>
           <td><%= carriage.type_label %></td>
-          <td><%= render "carriage/seats_#{carriage.type.underscore}", carriage: carriage %></td>
+          <td><%= render "carriages/seats_#{carriage.type.underscore}", carriage: carriage %></td>
+          <td><%= link_to 'Show', carriage_path(carriage) %></td>
+          <td><%= link_to 'Edit', edit_carriage_path(carriage) %></td>
+          <td><%= link_to 'Destroy', carriage_path(carriage), method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>
     <% end %>
     </tbody>
@@ -47,7 +52,7 @@
 </div>
 
 <h2>Seats count by type:</h2>
-<table>
+<table class="table">
   <thead>
   <tr>
     <th>Carriage type</th>
