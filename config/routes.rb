@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'welcome/index'
 
-  resources :trains
+  resources :trains do
+     resources :carriages, shallow: true
+  end
+
   resources :railway_stations do
     patch :update_station_place_in_route, on: :member
   end
+  
   resources :routes 
-  resources :carriages
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

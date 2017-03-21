@@ -1,7 +1,7 @@
 class Carriage < ActiveRecord::Base
   self.inheritance_column = :foo
 
-  TYPES = { CoupeCarriage: 'Coupe', EconomyCarriage: 'Economy', BusinessClassCarriage: 'Business - Class', SittingCarriage: 'Sitting' }
+  TYPES = { CoupeCarriage: 'Coupe', EconomyCarriage: 'Economy', BusinessCarriage: 'Business - Class', SittingCarriage: 'Sitting' }
   SEATS_TYPES = { bottom_seats: 'Bottom', top_seats: 'Top', side_bottom_seats: 'Side bottom',
                   side_top_seats: 'Side top', seats: 'Seats' }
   belongs_to :train
