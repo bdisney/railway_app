@@ -1,0 +1,43 @@
+ <h1>Search tickets</h1>
+
+<%= form_for(@search, method: :post, url: search_path) do |f| %>
+
+    <div class="row">
+      <div class="col-md-6">
+        
+        <%= f.collection_select :start_station_id, RailwayStation.all.ordered_by_title, :id, :title, {prompt: "Select departing"}, { class: "mdb-select colorful-select dropdown-warning" } %>
+      </div>
+
+      <div class="col-md-6">
+      
+        <%= f.collection_select :end_station_id, RailwayStation.all.ordered_by_title, :id, :title, {prompt: "Select destination "}, { class: "mdb-select colorful-select dropdown-warning" } %>
+      </div>
+      </div>
+
+    <div class="actions">
+      <%= submit_tag 'Search' %>
+    </div>
+<% end %>
+
+<% if @search.result %>
+  <% if @search.result.empty? %>
+      <p>Search result is empty</p>
+  <% else %>
+      <table>
+        <thead>
+          <tr>
+            <th>Train</th>
+            <th>Route</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @search.result.each do |train| %>
+            <tr>
+              <td><%= train.number %></td>
+              <td><%= train.route.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  <% end %>
+<% end %> 

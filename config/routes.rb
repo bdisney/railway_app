@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'welcome/index'
 
-  resource :search, only: [:show]
+  resource :search, only: [:show, :create]
 
   resources :trains do
      resources :carriages, shallow: true
