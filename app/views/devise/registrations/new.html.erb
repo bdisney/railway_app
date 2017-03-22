@@ -1,0 +1,55 @@
+
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %><br /><br />
+
+<%= render 'shared/errors_messages', resource: resource %>
+
+<div class="flex-center">
+<!--Form with header-->
+  <div class="card">
+      <div class="card-block" >
+
+          <!--Header-->
+          <div class="form-header blue-gradient">
+              <h3><i class="fa fa-user"></i> Register:</h3>
+          </div>
+
+          <!--Body-->
+          <div class="md-form">
+              <i class="fa fa-user prefix"></i>
+              <%= f.text_field :first_name, class: "form-control", id: "form2" %>
+              <label for="form2">First name</label>
+          </div>
+
+          <div class="md-form">
+              <i class="fa fa-user prefix" style="display: none;"></i>
+              <%= f.text_field :last_name, class: "form-control", id: "form2" %>
+              <label for="form2">Last name</label>
+          </div>
+
+          <div class="md-form">
+              <i class="fa fa-envelope prefix"></i>
+              <%= f.email_field :email, class: "form-control", id: "form2" %>
+              <label for="form2">Your email</label>
+          </div>
+
+          <div class="md-form">
+              <i class="fa fa-lock prefix"></i>
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "form4" %>
+              <label for="form4">Your password</label>
+          </div>
+
+          <div class="text-center">
+              <button class="btn btn-indigo">Sign up</button>
+              <hr>
+              <fieldset class="form-group">
+                  <input type="checkbox" id="checkbox1">
+                  <label for="checkbox1">Subscribe me to the newsletter</label>
+              </fieldset>
+          </div>
+      </div>
+  </div>
+</div>
+<br /><br />
+<% end %>
