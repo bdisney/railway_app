@@ -1,11 +1,10 @@
-<% if resource.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(resource.errors.count, 'error') %> prohibited this record from being saved:</h2>
-
-      <ul>
-        <% resource.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+<div data-alert class="alert-box">
+  <script type="text/javascript">
+        <% if resource.errors.any? %>
+            <% resource.errors.full_messages.each do |msg| %>
+                toastr.error('<%= msg %>')
+            <% end %>
         <% end %>
-      </ul>
-    </div>
-<% end %>
+    </script>
+  
+</div>
