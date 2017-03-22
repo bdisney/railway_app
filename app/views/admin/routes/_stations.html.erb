@@ -8,9 +8,9 @@
   <tbody>
     <% stations.each do |station| %>
       <tr>
-        <td><%= link_to station.title, station %></td>
+        <td><%= link_to station.title, admin_railway_station_path(station) %></td>
         <td>
-          <%= form_tag(update_station_place_in_route_railway_station_path(station), method: :patch) do %>
+          <%= form_tag(update_station_place_in_route_admin_railway_station_path(station), method: :patch) do %>
           <%= hidden_field_tag :route_id, @route.id %>
               
           <%= number_field_tag :position, station.within_route(@route, :position) %>
@@ -33,7 +33,7 @@
         <ul class="stepper stepper-horizontal">
         <% stations.each do |station| %>
         <li class="completed">
-        <a href="<%= railway_station_path(station) %>">
+        <a href="<%= admin_railway_station_path(station) %>">
                     <span class="circle" ><%= station.within_route(@route, :position) %></span>
                     <span class="label"><%=  station.title %></span>
                 </a>

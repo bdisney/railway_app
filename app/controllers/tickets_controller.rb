@@ -8,7 +8,7 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save
       redirect_to root_path, notice: 'Thank you!'

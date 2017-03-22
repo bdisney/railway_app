@@ -1,6 +1,6 @@
 
 
-<%= form_for(@train) do |f| %>
+<%= form_for [:admin, @train] do |f| %>
   <%= render 'shared/errors_messages', resource: @train %>
 
   <div class="field">

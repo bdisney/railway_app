@@ -8,7 +8,7 @@
 <p>
   <strong>Currnet Station</strong>
   <% if @train.current_station.present? %>
-      <%= link_to @train.current_station.title, @train.current_station %>
+      <%= link_to @train.current_station.title, admin_railway_station_path(@train.current_station) %>
   <% else %>
       Current station isn't set
   <% end %>
@@ -17,7 +17,7 @@
 <p>
   <strong>Route:</strong>
   <% if @train.route.present? %>
-      <%= link_to @train.route.name, @train.route %>
+      <%= link_to @train.route.name, admin_route_path(@train.route) %>
   <% else %>
       Route isn't set
   <% end %>
@@ -26,7 +26,7 @@
 
 <h2>Carriages:</h2>
 <div>
-  <span><%= link_to 'Add carriage', new_train_carriage_path(@train) %></p></span>
+  <span><%= link_to 'Add carriage', new_admin_train_carriage_path(@train) %></p></span>
   <table class="table">
     <thead>
     <tr>
@@ -39,12 +39,12 @@
     <tbody>
     <% @train.ordered_carriages.each do |carriage| %>
         <tr>
-          <td><%= link_to carriage.number, carriage_path(carriage) %></td>
+          <td><%= link_to carriage.number, admin_carriage_path(carriage) %></td>
           <td><%= carriage.type_label %></td>
-          <td><%= render "carriages/seats_#{carriage.type.underscore}", carriage: carriage %></td>
-          <td><%= link_to 'Show', carriage_path(carriage) %></td>
-          <td><%= link_to 'Edit', edit_carriage_path(carriage) %></td>
-          <td><%= link_to 'Destroy', carriage_path(carriage), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <td><%= render "admin/carriages/seats_#{carriage.type.underscore}", carriage: carriage %></td>
+          <td><%= link_to 'Show', admin_carriage_path(carriage) %></td>
+          <td><%= link_to 'Edit', edit_admin_carriage_path(carriage) %></td>
+          <td><%= link_to 'Destroy', admin_carriage_path(carriage), method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>
     <% end %>
     </tbody>
@@ -76,5 +76,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path %>

@@ -9,13 +9,8 @@ class Ticket < ActiveRecord::Base
   validates :passport_number, format: {with: /\A[[:digit:]]{4}[\s]+[[:digit:]]{6}\z/}
 
   before_validation :gen_serial_number, on: :create
-  before_validation :set_user, on: :create
 
   def gen_serial_number
     self.serial_number = rand(9**10).to_s
-  end
-
-  def set_user
-    self.user = User.first
   end
 end

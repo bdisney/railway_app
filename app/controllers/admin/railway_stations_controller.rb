@@ -1,4 +1,4 @@
-class RailwayStationsController < ApplicationController
+class Admin::RailwayStationsController < Admin::BaseController
   before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_station_place_in_route]
 
   def index
@@ -19,7 +19,7 @@ class RailwayStationsController < ApplicationController
     @railway_station = RailwayStation.new(railway_station_params)
 
     if @railway_station.save
-      redirect_to @railway_station, notice: 'Railway station was successfully created.'
+      redirect_to admin_railway_station_path(@railway_station), notice: 'Railway station was successfully created.'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class RailwayStationsController < ApplicationController
 
   def update
     if @railway_station.update(railway_station_params)
-      redirect_to @railway_station, notice: 'Railway station was successfully updated.'
+      redirect_to admin_railway_station_path(@railway_station), notice: 'Railway station was successfully updated.'
     else
       render :edit
     end
@@ -37,15 +37,15 @@ class RailwayStationsController < ApplicationController
     @route = Route.find(params[:route_id])
 
     if @railway_station.update_station_place_in_route(@route, params[:position], params[:arrival_time], params[:departure_time])
-      redirect_to @route, notice: 'Stations in route was successfully updated.'
+      redirect_to admin_route_path(@route), notice: 'Stations in route was successfully updated.'
     else
-      redirect_to @route, notice: 'Stations in route was not reordered.'
+      redirect_to admin_route_path(@route), notice: 'Stations in route was not reordered.'
     end
   end
 
   def destroy
     @railway_station.destroy
-    redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.'
+    redirect_to admin_railway_stations_path, notice: 'Railway station was successfully destroyed.'
   end
 
   private

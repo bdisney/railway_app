@@ -1,4 +1,4 @@
-class TrainsController < ApplicationController
+class Admin::TrainsController < Admin::BaseController
   before_action :set_train, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,7 +19,7 @@ class TrainsController < ApplicationController
     @train = Train.new(train_params)
 
     if @train.save
-      redirect_to @train, notice: 'Train was successfully created.'
+      redirect_to admin_train_path(@train), notice: 'Train was successfully created.'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class TrainsController < ApplicationController
 
   def update
     if @train.update(train_params)
-      redirect_to @train, notice: 'Train was successfully updated.'
+      redirect_to admin_train_path(@train), notice: 'Train was successfully updated.'
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class TrainsController < ApplicationController
   # DELETE /trains/1.json
   def destroy
     @train.destroy
-    redirect_to trains_url, notice: 'Train was successfully destroyed.'
+    redirect_to admin_trains_path, notice: 'Train was successfully destroyed.'
   end
 
   private
