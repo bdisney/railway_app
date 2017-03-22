@@ -16,6 +16,6 @@ class Ticket < ActiveRecord::Base
   end
 
   def set_user
-    self.user_id = User.first.id
+    self.user = User.first
   end
 end
