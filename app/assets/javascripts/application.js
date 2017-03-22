@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require tether
+//= require toastr
 //= require turbolinks
 //= require_tree .

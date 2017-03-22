@@ -4,9 +4,7 @@ class TicketsController < ApplicationController
   end
 
   def buy
-    @ticket = Ticket.new(train_id: params[:train_id],
-                         start_station_id: params[:start_station_id],
-                         end_station_id: params[:end_station_id])
+    @ticket = Ticket.new(train_id: params[:train_id], start_station_id: params[:start_station_id], end_station_id: params[:end_station_id])
   end
 
   def create
