@@ -1,5 +1,19 @@
 /* YOUR CUSTOM STYLES */
 
-main {
-  margin-top: 80px;
+html,
+body {
+  margin:0;
+  padding-top: 40px;
+  height:100%;
 }
+
+.navbar {
+  background-color: #90a4ae;
+}
+
+.page-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #90a4ae;
+ }
