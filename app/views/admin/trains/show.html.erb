@@ -1,12 +1,11 @@
-<p id="notice"><%= notice %></p>
-
+<h1><%= t('.title') %></h1>
 <p>
   <strong>Number:</strong>
   <%= @train.number %>
 </p>
 
 <p>
-  <strong>Currnet Station</strong>
+  <strong>Current Station</strong>
   <% if @train.current_station.present? %>
       <%= link_to @train.current_station.title, admin_railway_station_path(@train.current_station) %>
   <% else %>
@@ -76,5 +75,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_admin_train_path(@train) %> |
-<%= link_to 'Back', admin_trains_path %>
+<%= link_to t('common.edit'), edit_admin_train_path(@train) %> |
+<%= link_to t('common.back'), admin_trains_path %>

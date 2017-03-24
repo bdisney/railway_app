@@ -14,9 +14,9 @@
         Station isn't set
     <% end %>
   </td>
-  <td>
-    <a class="blue-text" href="<%= admin_train_path(train) %>"><i class="fa fa-eye"></i></a>
-    <a class="teal-text" href="<%= edit_admin_train_path(train) %>" rel="nofollow"><i class="fa fa-pencil"></i></a>
-    <a class="red-text" href="<%= admin_train_path(train) %>"  data-method="delete" rel="nofollow" data-confirm="Are you sure?"><i class="fa fa-times"></i></a>
-  </td>
+  <%= render 'shared/actions', links: {
+                  show: admin_train_path(train),
+                  edit: edit_admin_train_path(train),
+                  delete: admin_train_path(train)
+                  } %>
 </tr>

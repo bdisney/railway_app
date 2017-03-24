@@ -5,7 +5,9 @@
   <td><%= ticket.start_station.title %></td>
   <td><%= ticket.end_station.title %></td>
   <td><%= ticket.user.full_name %></td>
-  <td><%= link_to 'Show', admin_ticket_path(ticket) %></td>
-  <td><%= link_to 'Edit', edit_admin_ticket_path(ticket) %></td>
-  <td><%= link_to 'Destroy', admin_ticket_path(ticket), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+  <%= render 'shared/actions', links: {
+                  show: admin_ticket_path(ticket),
+                  edit: edit_admin_ticket_path(ticket),
+                  delete: admin_ticket_path(ticket)
+                  } %>
 </tr>
