@@ -1,10 +1,11 @@
   <!--Navbar-->
         <nav class="navbar fixed-top navbar-toggleable-md scrolling-navbar navbar-dark double-nav">
-
+        <% if user_signed_in? && current_user.admin? %>
             <!-- SideNav slide-out button -->
             <div class="float-left">
                 <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
             </div>
+            <% end %>
 
             <!-- Breadcrumb-->
             <div class="breadcrumb-dn mr-auto">
@@ -24,7 +25,7 @@
                               <a class="nav-link" href="<%= edit_user_registration_path %>"><i class="fa fa-user"> </i><span class="hidden-sm-down">  <%= "#{current_user.full_name}" %> </span></a>
                           </li>
                           <li class="nav-item">
-                              <%= link_to destroy_user_session_path, method: :delete, rel: "nofollow", class: "nav-link" do %>
+                              <%= link_to destroy_user_session_path, method: :get, rel: "nofollow", class: "nav-link" do %>
                                     <span class="hidden-sm-down "> <i class="fa fa-sign-out"> </i> <%= t('.log_out') %></span>
                               <% end %>
                           </li>
