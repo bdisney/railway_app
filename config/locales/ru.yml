@@ -1,13 +1,31 @@
 ru:
-  common:
+  shared:
     back: "Назад"
     add: "Добавить"
     show: "Посмотреть"
     edit: "Редактировать"
     destroy: "Удалить"
+    update: "Обновить"
     confirm: "Вы уверены?"
+    empty: "Нет записей"
+    not_set:
+      f: "Не указана"
+      m: "Не указано"
+      many: "Не указаны"
+    count: "Количество"
+    actions: "Действия"
+    nav_bar: 
+      my_tickets: "Мои билеты"
+      dashboard: "Панель админа"
+      log_in: "Вход"
+      log_out: "Выход"
+    sidebar:
+      routes: "Маршруты"
+      railway_stations: "Ж/Д Станции"
+      trains: "Поезда"
+      tickets: "Билеты"
   admin:
-    trains:
+    trains: 
       index:
         title: "Поезда"
       new:
@@ -16,23 +34,93 @@ ru:
         title: "Изменить поезд"
       show:
         title: "Поезд"
+        add_carriage: "Добавить вагон"
+        carriages: "Вагоны"
+        seats_count_by_type: "Количество мест по типу"
+        seats: "Места"
       form:
         submit: "%{action} поезд"
       attributes:
         number: "Номер"
         route: "Маршрут"
         current_station: "Текущая станция"
-
     railway_stations:
-          index:
-            title: "Станции"
-          new:
-            title: "Новая станция"
-          edit:
-            title: "Редактировать станцию"
-          show:
-            title: "Станция"
-          form:
-            submit: "%{action} станцию"
-          attributes:
-            title: "Название"
+      index:
+        title: "Станции"
+      new:
+        title: "Новая станция"
+      edit:
+        title: "Редактировать станцию"
+      show:
+        title: "Станция"
+      form:
+        submit: "%{action} станцию"
+      attributes:
+        title: "Наименование"
+        position: "Позиция в маршруте"
+        trains_on_station: "Поезда на станции"
+    routes:
+      index:
+        title: "Маршруты"
+      new:
+        title: "Новый маршрут"
+      edit:
+        title: "Редактировать маршрут"
+      show:
+        title: "Маршрут"
+      form:
+        submit: "%{action} маршрут"
+      attributes:
+        name: "Наименование"
+        stations: "Станции в маршруте"
+        trains: "Поезда на маршруте"
+    carriages:
+      new:
+        title: "Новый вагон"
+      edit:
+        title: "Редактировать вагон"
+      show:
+        title: "Вагон"
+        seats: "Места"
+      form:
+        submit: "%{action} вагон"
+      attributes:
+        type: "Тип вагона"
+        seat_type: "Тип места"
+        train: "Номер поезда"
+        number: "Номер вагона"
+    tickets:
+      index:
+        title: "Список купленных билетов"
+      attributes:
+        sn: "Серийный номер"
+        train: "Номер поезда"
+        route: "Маршрут"
+        start_station: "Станция отправления"
+        end_station: "Станция прибытия"
+        buyer: "Покупатель"
+  searches:
+    show:
+      title: "Поиск билетов"
+      submit: "Мне повезет!"
+      search_results: "Результаты поиска"
+      empty: "К сожалению, билетов по заданному маршруту не найдено."
+      buy: "Купить"
+  users:
+    sign_in:
+      title: "Вход"
+  tickets:
+    my:
+      title: "Мои билеты"
+    buy:
+      title: "Купить билет"
+      
+    attributes:
+      sn: "Серийный номер"
+      train: "Номер поезда"
+      route: "Маршрут"
+      start_station: "Откуда"
+      end_station: "Куда"
+      arrival_time: "Время прибытия"
+      departure_time: "Время отправления"
+

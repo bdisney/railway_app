@@ -30,8 +30,8 @@ ru:
         last_name: "Фамилия"
       carriage:
         type: "Тип"
-        top_seats: "Верхние"
-        bottom_seats: "Нижние"
+        top_seats: "Верхние места"
+        bottom_seats: "Нижние места"
         side_top_seats: "Верхние боковые"
         side_bottom_seats: "Нижние боковые"
         seats: "Места"
@@ -40,7 +40,7 @@ ru:
       messages:
         blank: "%{attribute} не может быть пустым"
         not_a_number: "%{attribute} должно быть числом"
-        greater_than: "%{attribute} должно быть больше %{count}"
+        greater_than: "%{attribute} должны быть больше %{count}"
         too_short: "Длина поля %{attribute} должна быть больше %{count}"
         too_long: "Длина поля %{attribute} не должна превышать %{count}"
         invalid: "%{attribute} имеет неверный формат"
