@@ -33,10 +33,10 @@
                   <% else %>
                       <ul class="navbar-nav ml-auto nav-flex-icons">
                           <li class="nav-item">
-                              <a class="nav-link" href="<%= new_user_session_path %>" rel="nofollow"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Log in</span></a>
+                              <a class="nav-link" href="<%= new_user_session_path %>" rel="nofollow"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down"><%= t('.log_in') %></span></a>
                           </li> 
                           <li class="nav-item">
-                              <a class="nav-link" href="<%= new_user_registration_path%>" rel="nofollow"><i class="fa fa-user-plus"></i> <span class="hidden-sm-down">Sign up</span></a>
+                              <a class="nav-link" href="<%= new_user_registration_path%>" rel="nofollow"><i class="fa fa-user-plus"></i> <span class="hidden-sm-down"><%= t('.sign_up') %></span></a>
                           </li> 
                       </ul>
 

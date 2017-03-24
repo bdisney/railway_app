@@ -7,8 +7,8 @@
     <div class="card-block">
 
         <!--Header-->
-        <div class="form-header   mdb-color lighten-2">
-            <h3><i class="fa fa-lock"></i> Login:</h3>
+        <div class="form-header   grey-gradient lighten-5">
+            <h3><i class="fa fa-lock"></i> <%= t('.log_in') %>:</h3>
         </div>
 
         <!--Body-->
@@ -16,27 +16,27 @@
             <i class="fa fa-envelope prefix"></i>
             <%= f.email_field :email, class: "form-control", id: "form2" %>
             
-            <label for="form2">Your email</label>
+            <label for="form2"><%= t('.your_email') %></label>
         </div>
 
         <div class="md-form">
             <i class="fa fa-lock prefix"></i>
             <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "form4" %>
-            <label for="form4">Your password</label>
+            <label for="form4"><%= t('.your_password') %></label>
         </div>
 
         <div class="text-center">
-            <button class="btn btn-blue-grey" value="Log in">Login</button>
+            <button class="btn btn-blue-grey" value="Log in"><%= t('.log_in') %></button>
         </div>
 
     </div>
 
     <!--Footer-->
     <div class="modal-footer">
-        <div class="options">
-            <p>Not a member? <a href="<%= new_user_registration_path %>" rel="nofollow">Sign Up</a></p>
-            <p>Forgot <a href="<%= new_password_path(resource_name) %>" rel="nofollow">Password?</a></p>
-            <p>Didn't receive <a href="<%= new_confirmation_path(resource_name) %>" rel="nofollow">Insrtuctions?</a></p>
+        <div class="options text-right">
+            <p><%= t('.not_a_member') %> <a href="<%= new_user_registration_path %>" rel="nofollow"><%= t('.sign_up') %></a></p>
+            <p><%= t('.forgot') %> <a href="<%= new_password_path(resource_name) %>" rel="nofollow"><%= t('.password') %></a></p>
+            <p><%= t('.did_not_receive') %> <a href="<%= new_confirmation_path(resource_name) %>" rel="nofollow"><%= t('.instructions') %></a></p>
         </div>
     </div>
 
