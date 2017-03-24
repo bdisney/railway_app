@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'dashboard/index'
 
     resources :railway_stations do
       patch :update_station_place_in_route, on: :member
