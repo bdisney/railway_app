@@ -1,28 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h4>Carriage</h4>
+<h4><%= t('.title') %> №  <%= @carriage.number %></h4>
 
 <p>
-  <strong>Train Number:</strong>
+  <strong><%= t('admin.carriages.attributes.train') %>:</strong>
   <%= @carriage.train.number %>
 </p>
 
 <p>
-  <strong>Type:</strong>
+  <strong><%= t('admin.carriages.attributes.type') %>:</strong>
   <%= @carriage.type_label %>
 </p>
 
 <p>
-   <strong>Carriage number:</strong>
-  <%= @carriage.number %>
-</p>
-
-<p>
-  <strong>Seats:</strong>
+  <strong><%= t('.seats') %>:</strong>
   <div class="col-md-4">
    <%= render "seats_#{@carriage.type.underscore}", carriage: @carriage %>
   </div>
 </p>
 
-<%= link_to 'Edit', edit_admin_carriage_path(@carriage) %> |
-<%= link_to 'Back', admin_train_path(@carriage.train) %>
+<%= link_to t('shared.edit'), edit_admin_carriage_path(@carriage) %> |
+<%= link_to t('shared.back'), admin_train_path(@carriage.train) %>

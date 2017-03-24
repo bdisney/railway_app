@@ -2,12 +2,10 @@
   <%= render 'shared/errors_messages', resource: @route %>
 
   <br/>
-   
-  <%= f.label "Add stations to the Route:" %>
   <%= f.collection_select :railway_station_ids, RailwayStation.all.ordered_by_title, :id, :title, {}, { multiple: true, class: "mdb-select colorful-select dropdown-warning" } %>
 
 <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('.submit', action: @route.new_record? ? 'Создать' : 'Изменить') %>
   </div>
 <% end %>
 

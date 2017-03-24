@@ -1,4 +1,4 @@
-<h4>Search tickets</h4>
+<h4><%= t('.title') %></h4>
 
 <%= form_for(@search, method: :post, url: search_path) do |f| %>
     <%= render 'shared/errors_messages', resource: @search %>
@@ -16,21 +16,21 @@
     </div>
 
     <div class="actions">
-        <%= submit_tag 'Search' %>
+        <%= submit_tag t('.submit') %>
     </div>
 <% end %>
 
 <% if @search.result %>
     <% if @search.result.empty? %>
-        <p>Search result is empty</p>
+        <p><%= t('.empty') %></p>
     <% else %>
-        <table>
-            <thead>
+        <table class="table text-center table-hover">
+            <thead class="table-inverse text-center">
                 <tr>
-                    <th>Train</th>
-                    <th>Route</th>
-                    <th>Departure time</th>
-                    <th>Arrival time</th>
+                    <th class="text-center"><%= t('tickets.attributes.train') %></th>
+                    <th class="text-center"><%= t('tickets.attributes.route') %></th>
+                    <th class="text-center"><%= t('tickets.attributes.departure_time') %></th>
+                    <th class="text-center"><%= t('tickets.attributes.arrival_time') %></th>
                     <th></th>
                 </tr>
             </thead>
@@ -46,7 +46,7 @@
                                 <%= hidden_field_tag :train_id, train.id %>
                                 <%= hidden_field_tag :start_station_id, @search.start_station_id %>
                                 <%= hidden_field_tag :end_station_id, @search.end_station_id %>
-                                <%= submit_tag 'Buy' %>
+                                <%= submit_tag t('.buy') %>
                             <% end %>
                         </td>
                     </tr>

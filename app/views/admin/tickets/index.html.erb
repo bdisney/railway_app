@@ -1,15 +1,15 @@
-<h1>Tickets</h1>
+<h1><%= t('.title') %></h1>
 
 <table class="table text-center table-hover">
   <thead class="table-inverse text-center">
   <tr>
-    <th class="text-center">Ticket:</th>
-    <th class="text-center">Train:</th>
-    <th class="text-center">Route:</th>
-    <th class="text-center">Departing:</th>
-    <th class="text-center">Destination:</th>
-    <th class="text-center">Customer:</th>
-    <th class="text-center">Actions</th>
+    <th class="text-center"><%= t('admin.tickets.attributes.sn') %></th>
+    <th class="text-center"><%= t('admin.tickets.attributes.train') %></th>
+    <th class="text-center"><%= t('admin.tickets.attributes.route') %></th>
+    <th class="text-center"><%= t('admin.tickets.attributes.start_station') %></th>
+    <th class="text-center"><%= t('admin.tickets.attributes.end_station') %></th>
+    <th class="text-center"><%= t('admin.tickets.attributes.buyer') %></th>
+    <th class="text-center"><%= t('shared.actions') %></th>
   </tr>
   </thead>
 

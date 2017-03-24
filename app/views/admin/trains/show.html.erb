@@ -1,38 +1,35 @@
-<h1><%= t('.title') %></h1>
-<p>
-  <strong>Number:</strong>
-  <%= @train.number %>
-</p>
+<h1><%= t('.title') %> № <%= @train.number %></h1>
 
 <p>
-  <strong>Current Station</strong>
+  <strong><%= t('admin.trains.attributes.current_station') %>:</strong>
   <% if @train.current_station.present? %>
       <%= link_to @train.current_station.title, admin_railway_station_path(@train.current_station) %>
   <% else %>
-      Current station isn't set
+      <%= t('shared.not_set.f') %>
   <% end %>
 </p>
 
 <p>
-  <strong>Route:</strong>
+  <strong><%= t('admin.trains.attributes.route') %>:</strong>
   <% if @train.route.present? %>
       <%= link_to @train.route.name, admin_route_path(@train.route) %>
   <% else %>
-      Route isn't set
+      <%= t('shared.not_set.m') %>
   <% end %>
 </p>
 
 
-<h2>Carriages:</h2>
+<h2><%= t('.carriages') %>:</h2>
 <div>
-  <span><%= link_to 'Add carriage', new_admin_train_carriage_path(@train) %></p></span>
-  <table class="table">
-    <thead>
+  <span><%= link_to t('.add_carriage'), new_admin_train_carriage_path(@train),
+                class: '', role: 'button' %></p></span>
+  <table class="table text-center table-hover">
+    <thead class="table-inverse text-center">
     <tr>
-      <th>Number</th>
-      <th>Type</th>
-      <th>Seats</th>
-      <th colspan="3">Actions</th>
+      <th class="text-center">Number</th>
+      <th class="text-center"><%= t('admin.carriages.attributes.type') %></th>
+      <th class="text-center"><%= t('.seats') %></th>
+      <th class="text-center"><%= t('shared.actions') %></th>
     </tr>
     </thead>
     <tbody>
@@ -41,22 +38,24 @@
           <td><%= link_to carriage.number, admin_carriage_path(carriage) %></td>
           <td><%= carriage.type_label %></td>
           <td><%= render "admin/carriages/seats_#{carriage.type.underscore}", carriage: carriage %></td>
-          <td><%= link_to 'Show', admin_carriage_path(carriage) %></td>
-          <td><%= link_to 'Edit', edit_admin_carriage_path(carriage) %></td>
-          <td><%= link_to 'Destroy', admin_carriage_path(carriage), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <%= render 'shared/actions', links: {
+                      show: admin_carriage_path(carriage),
+                      edit: edit_admin_carriage_path(carriage),
+                      delete: admin_carriage_path(carriage)
+                      } %>
         </tr>
     <% end %>
     </tbody>
   </table>
 </div>
 
-<h2>Seats count by type:</h2>
-<table class="table">
-  <thead>
+<h2><%= t('.seats_count_by_type') %>:</h2>
+<table class="table text-center table-hover">
+  <thead class="table-inverse text-center">
   <tr>
-    <th>Carriage type</th>
-    <th>Seat type</th>
-    <th>Count</th>
+    <th class="text-center"><%= t('admin.carriages.attributes.type') %></th>
+    <th class="text-center"><%= t('admin.carriages.attributes.seat_type') %></th>
+    <th class="text-center"><%= t('shared.count') %></th>
   </tr>
   </thead>
   <tbody>
@@ -75,5 +74,5 @@
   </tbody>
 </table>
 
-<%= link_to t('common.edit'), edit_admin_train_path(@train) %> |
-<%= link_to t('common.back'), admin_trains_path %>
+<%= link_to t('shared.edit'), edit_admin_train_path(@train) %> |
+<%= link_to t('shared.back'), admin_trains_path %>

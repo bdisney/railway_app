@@ -1,5 +1,5 @@
-<h1>New Carriage</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'form', carriage: @carriage %>
 
-<%= link_to 'Back', admin_train_carriages_path %>
+<%= link_to  t('shared.back'), admin_train_carriages_path %>
