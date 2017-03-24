@@ -30,104 +30,12 @@
 <body>
 <div id="wrapper">
   <header>
-      <!--Navbar-->
-      <nav class="navbar fixed-top navbar-toggleable-md scrolling-navbar navbar-dark ">
-          <div class="container">
-              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <a class="navbar-brand" href="/">
-                  <strong><i class="fa fa-subway red-text"> </i>  Tutu</strong>
-              </a>
-              <div class="collapse navbar-collapse" id="navbarNav1">
-                  <ul class="navbar-nav mr-auto">
-                      <li class="nav-item">
-                          <a class="nav-link" href="<%= root_url %>">Home <span class="sr-only">(current)</span></a>
-                      </li>
-                  </ul>
-                  <% if user_signed_in? %> 
-                      <ul class="navbar-nav ml-auto nav-flex-icons">
-                          <li class="nav-item">
-                              <a class="nav-link" href="<%= my_tickets_path%>"><i class="fa fa-ticket"> </i><span class="hidden-sm-down"> My tickets </span></a>
-                          </li>
-                      <% if current_user.admin? %>
-                          <li class="nav-item">
-                              <a class="nav-link" href="<%= admin_routes_path %>"><i class="fa fa-user"> </i><span class="hidden-sm-down">  Dashboard </span></a>
-                          </li>
-                      <% end %>
-                          <li class="nav-item">
-                              <a class="nav-link" href="<%= edit_user_registration_path %>"><i class="fa fa-user"> </i><span class="hidden-sm-down">  <%= "#{current_user.full_name}" %> </span></a>
-                          </li>
-                          
-                          
-                          <li class="nav-item">
-
-                              <%= link_to raw("<i class=\"fa fa-sign-out\"></i><span class=\"hidden-sm-down\">Log out</span>"), 
-                                                        destroy_user_session_path, 
-                                                        class: "nav-link",
-                                                        rel: "nofollow",
-                                                        method: :delete %>
-                          </li>
-                      </ul>
-                  <% else %>
-                      <ul class="navbar-nav ml-auto nav-flex-icons">
-                          <li class="nav-item">
-                              <a class="nav-link" href="<%= new_user_session_path %>" rel="nofollow"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Log in</span></a>
-                          </li> 
-                          <li class="nav-item">
-                              <a class="nav-link" href="<%= new_user_registration_path%>" rel="nofollow"><i class="fa fa-user-plus"></i> <span class="hidden-sm-down">Sign up</span></a>
-                          </li> 
-                      </ul>
-
-                  <% end %>
-              </div>
-          </div>
-      </nav>
-      <!--/.Navbar-->
+      <%= render 'shared/nav_bar' %>
   </header>
   <main>
       <div class="container">
           <div class="row">
-              <div class="col-sm-3 col-md-3">
-                  <br />
-                  <div class="card card-cascade narrower">
-                      <div class="admin-panel">
-                          <div class="view form-header blue lighten-2">
-                              <h5 class="text-center">Resources</h5>
-                          </div>
-                          <!--Card content-->
-                          <div class="card-block">
-                              <div class="list-group">
-                                  <ul class="list-group">
-                                      <li class="list-group-item list-group-item-action">
-                                          <%= link_to (admin_routes_path ) do %>
-                                              <span><i class="fa fa-road"></i> Routes</span>
-
-                                          <% end %>
-                                      </li>
-                                      <li class="list-group-item list-group-item-action">
-                                          <%= link_to (admin_railway_stations_path) do %>
-                                              <span><i class="fa fa-bank"></i> Railway Stations</span>
-                                          <% end %>
-                                      </li>
-                                      <li class="list-group-item list-group-item-action">
-                                          <%= link_to (admin_trains_path) do %>
-                                              <span><i class="fa fa-train ml-auto" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click to fix"></i> Trains</span>
-                                          <% end %>
-                                      </li>
-                                      <li class="list-group-item list-group-item-action">
-                                          <%= link_to (admin_tickets_path) do %>
-                                              <span><i class="fa fa-ticket"></i> Tickets</span>
-                                          <% end %>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                          <!--/.Card content-->
-                      </div>
-                  </div>
-
-              </div>
+              <%= render 'shared/sidebar' %>
               <% unless flash.empty? %>
                   <script type="text/javascript">
                       <% flash.each do |f| %>

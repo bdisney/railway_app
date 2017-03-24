@@ -1,0 +1,47 @@
+   <!--Navbar-->
+      <nav class="navbar fixed-top navbar-toggleable-md scrolling-navbar navbar-dark ">
+          <div class="container">
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <a class="navbar-brand" href="/">
+                  <strong><i class="fa fa-subway red-text"> </i>  Tutu</strong>
+              </a>
+              <div class="collapse navbar-collapse" id="navbarNav1">
+                  <ul class="navbar-nav mr-auto">
+                      
+                  </ul>
+                  <% if user_signed_in? %> 
+                      <ul class="navbar-nav ml-auto nav-flex-icons">
+                          <li class="nav-item">
+                              <a class="nav-link" href="<%= my_tickets_path%>"><i class="fa fa-ticket"> </i><span class="hidden-sm-down"> <%= t('.my_tickets') %> </span></a>
+                          </li>
+                      <% if current_user.admin? %>
+                          <li class="nav-item">
+                              <a class="nav-link" href="<%= admin_routes_path %>"><i class="fa fa-user"> </i><span class="hidden-sm-down">  <%= t('.dashboard') %> </span></a>
+                          </li>
+                      <% end %>
+                          <li class="nav-item">
+                              <a class="nav-link" href="<%= edit_user_registration_path %>"><i class="fa fa-user"> </i><span class="hidden-sm-down">  <%= "#{current_user.full_name}" %> </span></a>
+                          </li>
+                          <li class="nav-item">
+                              <%= link_to destroy_user_session_path, method: :delete, rel: "nofollow", class: "nav-link" do %>
+                                    <span class="hidden-sm-down "> <i class="fa fa-sign-out"> </i> <%= t('.log_out') %></span>
+                              <% end %>
+                          </li>
+                      </ul>
+                  <% else %>
+                      <ul class="navbar-nav ml-auto nav-flex-icons">
+                          <li class="nav-item">
+                              <a class="nav-link" href="<%= new_user_session_path %>" rel="nofollow"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Log in</span></a>
+                          </li> 
+                          <li class="nav-item">
+                              <a class="nav-link" href="<%= new_user_registration_path%>" rel="nofollow"><i class="fa fa-user-plus"></i> <span class="hidden-sm-down">Sign up</span></a>
+                          </li> 
+                      </ul>
+
+                  <% end %>
+              </div>
+          </div>
+      </nav>
+      <!--/.Navbar-->
