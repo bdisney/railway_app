@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Railway App</title>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= csrf_meta_tags %>
-
-    <link rel="icon" type="image/png" href="" />
+    <title>Material Design Bootstrap Template</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -23,40 +19,44 @@
     <%= stylesheet_link_tag 'mdb.min.css' %>
     <%= stylesheet_link_tag 'style.css' %>
 
-    
-     
-   
+    <style>
+
+
+    </style>
+
 </head>
-<body>
-<div id="wrapper">
-  <header>
-      <%= render 'shared/nav_bar' %>
-  </header>
-  <main>
-      <div class="container">
-          <div class="row">
-              <%= render 'shared/sidebar' %>
-              <% unless flash.empty? %>
-                  <script type="text/javascript">
-                      <% flash.each do |f| %>
-                          <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-                          toastr['<%= type %>']('<%= f[1] %>');
-                      <% end %>
-                 </script>
-              <% end %>
-              <div class="col-md-9">
-                  <br />
-                  <%= yield %>
-              </div>
-          </div>
-      </div>
-  </main>
-</div>
 
+<body class="fixed-sn grey-skin">
 
+    <!--Double navigation-->
+    <header>
+        
+        <%= render 'shared/sidebar' %>
+        
 
+        <%= render 'shared/nav_bar' %>
+    </header>
+    <!--/Double navigation-->
 
-  <!-- SCRIPTS -->
+    <!--Main layout-->
+    <main>
+        <div class="container-fluid">
+        <% unless flash.empty? %>
+                    <script type="text/javascript">
+                        <% flash.each do |f| %>
+                            <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+                            toastr['<%= type %>']('<%= f[1] %>');
+                        <% end %>
+                   </script>
+                <% end %>
+
+            <%= yield %>
+
+        </div>
+    </main>
+    <!--/Main layout-->
+
+   <!-- SCRIPTS -->
 
    <!-- JQuery -->
     <%= javascript_include_tag 'jquery-3.1.1.js' %>
@@ -69,56 +69,25 @@
 
     <!-- MDB core JavaScript -->
     <%= javascript_include_tag 'mdb.min.js' %>
-
-     <script>
-        new WOW().init();
+    <script>
+        // SideNav init
+        $(".button-collapse").sideNav();
+        var el = document.querySelector('.custom-scrollbar');
+        Ps.initialize(el);
     </script>
 
     <script>
+        new WOW().init();
+    </script>
+
+      <script>
         // Material Select Initialization
         $(document).ready(function() {
           $('.mdb-select').material_select();
         });
     </script>
 
+
 </body>
-
-<!--Footer-->
-<footer class="page-footer blue-grey lighten-3 center-on-small-only">
-    <!--Footer Links-->
-    <div class="container-fluid">
-        <div class="row">
-
-            <!--First column-->
-            <div class="col-md-6">
-                <h5 class="title">Railway App</h5>
-                <p>My thinknetica trainig project</p>
-            </div>
-            <!--/.First column-->
-
-            <!--Second column-->
-            <div class="col-md-6">
-                <h5 class="title">Links</h5>
-                <ul>
-                    <li><a href="#!">Link 1</a></li>
-                </ul>
-            </div>
-            <!--/.Second column-->
-        </div>
-    </div>
-    <!--/.Footer Links-->
-
-    <!--Copyright-->
-    <div class="footer-copyright">
-        <div class="container-fluid">
-            <a href=""> bdisney </a>
-
-        </div>
-    </div>
-    <!--/.Copyright-->
-
-</footer>
-<!--/.Footer-->
-
 
 </html>
