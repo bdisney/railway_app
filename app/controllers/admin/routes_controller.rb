@@ -18,7 +18,7 @@ before_action :set_route, only: [:show, :edit, :update, :destroy]
   def create
     @route = Route.new(route_params)
     if @route.save
-      redirect_to admin_route_path(@route), notice: 'Route was successfully created.'
+      redirect_to admin_route_path(@route), notice: t('.notice')
     else
       render :new
     end
@@ -26,7 +26,7 @@ before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   def update
     if @route.update(route_params)
-      redirect_to admin_route_path(@route), notice: 'Route was successfully updated'
+      redirect_to admin_route_path(@route), notice: t('.notice')
     else
       render :edit
     end
@@ -34,7 +34,7 @@ before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @route.destroy
-    redirect_to admin_routes_path, notice: 'Route was successfully deleted.'
+    redirect_to admin_routes_path, notice: t('.notice')
   end
 
   private
