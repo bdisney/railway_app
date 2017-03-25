@@ -1,19 +1,28 @@
-<h1><%= t('.title') %></h1>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title') %> <strong> <span class="text-muted"></span></strong>
+    </h2>
+</div>
 
-<table class="table text-center table-hover">
-  <thead class="table-inverse text-center">
-  <tr>
-    <th class="text-center"><%= t('admin.tickets.attributes.sn') %></th>
-    <th class="text-center"><%= t('admin.tickets.attributes.train') %></th>
-    <th class="text-center"><%= t('admin.tickets.attributes.route') %></th>
-    <th class="text-center"><%= t('admin.tickets.attributes.start_station') %></th>
-    <th class="text-center"><%= t('admin.tickets.attributes.end_station') %></th>
-    <th class="text-center"><%= t('admin.tickets.attributes.buyer') %></th>
-    <th class="text-center"><%= t('shared.actions') %></th>
-  </tr>
-  </thead>
 
-  <tbody>
-    <%= render @tickets %>
-  </tbody>
-</table>
+<div class="card">
+    <div class="card-block">
+        <table class="table text-center table-hover">
+          <thead class="table text-center primary-color white-text">
+          <tr>
+            <th class="text-center"><%= t('tickets.attributes.sn') %></th>
+            <th class="text-center"><%= t('tickets.attributes.train') %></th>
+            <th class="text-center"><%= t('tickets.attributes.route') %></th>
+            <th class="text-center"><%= t('tickets.attributes.start_station') %></th>
+            <th class="text-center"><%= t('tickets.attributes.end_station') %></th>
+            <th class="text-center"><%= t('tickets.attributes.buyer') %></th>
+            <th class="text-center"><%= t('shared.actions') %></th>
+          </tr>
+          </thead>
+
+          <tbody>
+            <%= render @tickets %>
+          </tbody>
+        </table>
+    </div>
+</div>
