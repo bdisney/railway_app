@@ -60,6 +60,8 @@ ru:
       attributes:
         title: "Наименование"
         position: "Позиция в маршруте"
+        arrival: "Прибытие"
+        departure: "Отправление"
         trains_on_station: "Поезда на станции"
     routes:
       index:
@@ -74,7 +76,8 @@ ru:
         submit: "%{action} маршрут"
       attributes:
         name: "Наименование"
-        stations: "Станции в маршруте"
+        route_map: "Маршрутная карта"
+        stations: "Расписание станций в маршруте"
         trains: "Поезда на маршруте"
     carriages:
       new:

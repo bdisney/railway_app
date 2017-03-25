@@ -1,24 +1,36 @@
-<h1><%= t('.title') %> "<%= @route.name %>"</h1>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title') %> <strong> <span class="text-muted">"<%= @route.name %>"</span></strong>
+    </h2>
+</div>
 
-<h2><%= t('admin.routes.attributes.stations') %>:</h2>
+<h4 class="text-center text-muted"><%= t('admin.routes.attributes.route_map') %>:</h4>
+
 <div>
   <%= render 'stations', stations: @route.railway_stations.ordered %>
 </div>
+<br />
 
-<h2><%= t('admin.routes.attributes.trains') %>:</h2>
+<h4 class="text-center text-muted"><%= t('admin.routes.attributes.trains') %>:</h4>
+
 <div>
-  <% if @route.trains.present? %>
-      <ul>
-        <% @route.trains.each do |train| %>
-            <li>
-              <%= link_to train.number, admin_train_path(train) %>
-            </li>
-        <% end %>
-      </ul>
-  <% else %>
-      <%= t('shared.empty') %>
-  <% end %>
+    <% if @route.trains.present? %>
+        <ul>
+            <% @route.trains.each do |train| %>
+                <li>
+                    <%= link_to admin_train_path(train) do %>
+                        <span><i class="fa fa-subway" aria-hidden="true"></i> <%= train.number %></span>
+                    <% end %>
+                </li>
+            <% end %>
+        </ul>
+    <% else %>
+        <%= t('shared.empty') %>
+    <% end %>
 </div>
 
 <%= link_to t('shared.edit'), edit_admin_route_path(@route) %> |
 <%= link_to t('shared.back'), admin_routes_path %>
+<br />
+
+<hr>

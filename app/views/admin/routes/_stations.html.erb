@@ -1,31 +1,4 @@
-<table>
-  <thead>
-    <tr>
-      <th><%= t('admin.railway_stations.attributes.title') %></th>
-      <th><%= t('admin.railway_stations.attributes.position') %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% stations.each do |station| %>
-      <tr>
-        <td><%= link_to station.title, admin_railway_station_path(station) %></td>
-        <td>
-          <%= form_tag(update_station_place_in_route_admin_railway_station_path(station), method: :patch) do %>
-          <%= hidden_field_tag :route_id, @route.id %>
-              
-          <%= number_field_tag :position, station.within_route(@route, :position) %>
-          <%= time_field_tag :arrival_time, station.within_route(@route, :arrival_time), placeholder: t('admin.railway_stations.attributes.arrival_time') %>
-          <%= time_field_tag :departure_time, station.within_route(@route, :departure_time), placeholder: t('admin.railway_stations.attributes.departure_time') %>
-          <%= submit_tag t('shared.update'), class: '' %>
-          
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table> 
-
-
+<br />
 <!-- Horizontal Steppers -->
 <div class="row">
     <div class="col-md-12">
@@ -44,6 +17,55 @@
     </div>
 </div>
 <!-- /.Horizontal Steppers -->
+<br />
+
+<h4 class="text-center text-muted"><%= t('admin.routes.attributes.stations') %>:</h4>
+<br /><br />
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="text-left"><%= t('admin.railway_stations.attributes.title') %></th>
+      <th class="text-center"><%= t('admin.railway_stations.attributes.position') %></th>
+      <th class="text-center"><%= t('admin.railway_stations.attributes.arrival') %></th>
+      <th class="text-center"><%= t('admin.railway_stations.attributes.departure') %></th>
+      <th class="text-center"><%= t('shared.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% stations.each do |station| %>
+          <tr>
+              <td class="align-middle">
+                  <%= link_to station.title, admin_railway_station_path(station) %>
+              </td>
+            
+              <%= form_tag(update_station_place_in_route_admin_railway_station_path(station), method: :patch) do %>
+                  <%= hidden_field_tag :route_id, @route.id %>
+                  <div class="row">
+                      <td class="align-bottom"> 
+                          <div class="range-field"> 
+                              <%= range_field_tag :position, station.within_route(@route, :position) %>
+                          </div>
+                      </td>
+                      <td class="align-bottom"> 
+                          <%= time_field_tag :arrival_time, station.within_route(@route, :arrival_time), placeholder: t('admin.railway_stations.attributes.arrival_time'), class: 'form-control', style: "width:80px;" %>
+                      </td>
+                      <td> 
+                          <%= time_field_tag :departure_time, station.within_route(@route, :departure_time), placeholder: t('admin.railway_stations.attributes.departure_time'), class: 'form-control' %>
+                      </td>
+                     
+                      <td class="text-center"> 
+                          <button type="submit" class="btn btn-outline-primary waves-effect"><%= t('shared.update') %></button>
+                      </td>
+                  </div>  
+              <% end %>
+          </tr>
+      <% end %>
+  </tbody>
+</table> 
+
+
+
 
 
 
