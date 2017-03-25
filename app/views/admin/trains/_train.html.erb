@@ -4,14 +4,14 @@
     <% if train.route.present? %>
         <%= link_to train.route.name, admin_route_path(train.route) %>
     <% else %>
-        Route isn't set
+        <%= t('shared.not_set.m') %>
     <% end %>
   </td>
   <td>
     <% if train.current_station.present? %>
         <%= link_to train.current_station.title, admin_railway_station_path(train.current_station) %>
     <% else %>
-        Station isn't set
+        <%= t('common.not_set.f') %>
     <% end %>
   </td>
   <%= render 'shared/actions', links: {

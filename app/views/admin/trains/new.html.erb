@@ -1,5 +1,10 @@
-<h1<%= t('.title') %></h1>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title') %><strong> <span class="text-muted"></span></strong>
+    </h2>
+</div>
 
 <%= render 'form' %>
 
+<br />
 <%= link_to t('shared.back'), admin_trains_path %>

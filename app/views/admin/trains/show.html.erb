@@ -1,78 +1,92 @@
-<h1><%= t('.title') %> № <%= @train.number %></h1>
-
-<p>
-  <strong><%= t('admin.trains.attributes.current_station') %>:</strong>
-  <% if @train.current_station.present? %>
-      <%= link_to @train.current_station.title, admin_railway_station_path(@train.current_station) %>
-  <% else %>
-      <%= t('shared.not_set.f') %>
-  <% end %>
-</p>
-
-<p>
-  <strong><%= t('admin.trains.attributes.route') %>:</strong>
-  <% if @train.route.present? %>
-      <%= link_to @train.route.name, admin_route_path(@train.route) %>
-  <% else %>
-      <%= t('shared.not_set.m') %>
-  <% end %>
-</p>
-
-
-<h2><%= t('.carriages') %>:</h2>
-<div>
-  <span><%= link_to t('.add_carriage'), new_admin_train_carriage_path(@train),
-                class: '', role: 'button' %></p></span>
-  <table class="table text-center table-hover">
-    <thead class="table-inverse text-center">
-    <tr>
-      <th class="text-center">Number</th>
-      <th class="text-center"><%= t('admin.carriages.attributes.type') %></th>
-      <th class="text-center"><%= t('.seats') %></th>
-      <th class="text-center"><%= t('shared.actions') %></th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @train.ordered_carriages.each do |carriage| %>
-        <tr>
-          <td><%= link_to carriage.number, admin_carriage_path(carriage) %></td>
-          <td><%= carriage.type_label %></td>
-          <td><%= render "admin/carriages/seats_#{carriage.type.underscore}", carriage: carriage %></td>
-          <%= render 'shared/actions', links: {
-                      show: admin_carriage_path(carriage),
-                      edit: edit_admin_carriage_path(carriage),
-                      delete: admin_carriage_path(carriage)
-                      } %>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title') %><strong> <span class="text-muted">№ <%= @train.number %></span></strong>
+    </h2>
 </div>
 
-<h2><%= t('.seats_count_by_type') %>:</h2>
-<table class="table text-center table-hover">
-  <thead class="table-inverse text-center">
-  <tr>
-    <th class="text-center"><%= t('admin.carriages.attributes.type') %></th>
-    <th class="text-center"><%= t('admin.carriages.attributes.seat_type') %></th>
-    <th class="text-center"><%= t('shared.count') %></th>
-  </tr>
-  </thead>
-  <tbody>
-    <% Carriage::TYPES.each do |carriage_type, carriage_label| %>
-      <% Carriage::SEATS_TYPES.each do |seats_type, seats_label| %>
-          <% count = @train.capacity_by_type(carriage_type, seats_type) %>
-          <% if count > 0 %>
-            <tr>
-              <td><%= carriage_label %></td>
-              <td><%= seats_label %></td>
-              <td><%= count %></td>
-            </tr>
-          <% end %>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+<div class="">
+    <p class="text-muted">
+        <strong><%= t('admin.trains.attributes.current_station') %>:</strong>
+        <% if @train.current_station.present? %>
+            <%= link_to @train.current_station.title, admin_railway_station_path(@train.current_station) %>
+        <% else %>
+            <%= t('shared.not_set.f') %>
+        <% end %>
+    </p>
 
-<%= link_to t('shared.edit'), edit_admin_train_path(@train) %> |
-<%= link_to t('shared.back'), admin_trains_path %>
+    <p class="text-muted">
+        <strong><%= t('admin.trains.attributes.route') %>:</strong>
+        <% if @train.route.present? %>
+            <%= link_to @train.route.name, admin_route_path(@train.route) %>
+        <% else %>
+            <%= t('shared.not_set.m') %>
+        <% end %>
+    </p>
+</div>
+
+<br />
+<div class="card">
+    <h3 class="card-header primary-color white-text"><i class="fa fa-subway" aria-hidden="true"></i> <%= t('.carriages') %>:</h3>
+
+    <div class="card-block">
+        <p class="text-right">
+            <span class=""><%= link_to t('.add_carriage'), new_admin_train_carriage_path(@train),
+              class: 'btn btn-secondary', role: 'button' %>
+            </span>
+        </p>
+        <table class="table text-center table-hover">
+            <thead class=" text-center">
+                <tr>
+                    <th class="text-center"><%= t('admin.carriages.attributes.number') %></th>
+                    <th class="text-center"><%= t('admin.carriages.attributes.type') %></th>
+                    <th class="text-center"><%= t('admin.carriages.show.seats') %></th>
+                    <th class="text-center"><%= t('shared.actions') %></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @train.ordered_carriages.each do |carriage| %>
+                    <tr>
+                      <td><%= link_to carriage.number, admin_carriage_path(carriage) %></td>
+                      <td><%= carriage.type_label %></td>
+                      <td><%= render "admin/carriages/seats_#{carriage.type.underscore}", carriage: carriage %></td>
+                      <%= render 'shared/actions', links: {
+                                  show: admin_carriage_path(carriage),
+                                  edit: edit_admin_carriage_path(carriage),
+                                  delete: admin_carriage_path(carriage)
+                                  } %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <h3 class="card-header primary-color white-text"><i class="" aria-hidden="true"></i> <%= t('.seats_count_by_type') %>:</h3>
+    <div class="card-block">
+        <table class="table text-center table-hover">
+            <thead class="text-center">
+                <tr>
+                    <th class="text-center"><%= t('admin.carriages.attributes.type') %></th>
+                    <th class="text-center"><%= t('admin.carriages.attributes.seat_type') %></th>
+                    <th class="text-center"><%= t('shared.count') %></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Carriage::TYPES.each do |carriage_type, carriage_label| %>
+                    <% Carriage::SEATS_TYPES.each do |seats_type, seats_label| %>
+                        <% count = @train.capacity_by_type(carriage_type, seats_type) %>
+                        <% if count > 0 %>
+                            <tr>
+                                <td><%= carriage_label %></td>
+                                <td><%= seats_label %></td>
+                                <td><%= count %></td>
+                            </tr>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+<%= link_to t('shared.edit'), edit_admin_train_path(@train), class: "text-danger" %> <span class="text-muted"> | </span>
+<%= link_to t('shared.back'), admin_trains_path, class: "text-danger" %>

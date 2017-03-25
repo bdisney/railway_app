@@ -1,26 +1,38 @@
-
+<%= render 'shared/errors_messages', resource: @train %>
 
 <%= form_for [:admin, @train] do |f| %>
-  <%= render 'shared/errors_messages', resource: @train %>
+    <div class="card">
+        <h3 class="card-header primary-color white-text"><i class="fa fa-subway" aria-hidden="true"></i> <%= t('.submit', action: @train.new_record? ? 'Создать' : 'Изменить') %>:</h3>
+        <div class="card-block">
 
-  <div class="field">
-    <%= f.label :number %>
-    <%= f.text_field :number %>
-  </div>
-
-  <br />
-
-  <%= f.select :current_station_id, RailwayStation.all.map{ |station| [ "#{station.title}", station.id ] }, {prompt: "Select station"}, class: "mdb-select colorful-select dropdown-warning" %>
-
-  <%= f.select :route_id, Route.all.map{ |route| [ "#{route.name}", route.id ] }, {prompt: "Select route"}, class: "mdb-select colorful-select dropdown-warning" %>
-
-   <div class="field">
-      
-      <%= f.check_box :order_from_tail %>
-      <%= f.label :order_from_tail %>
+            <div class="row">
+                <div class="col-md-6">  
+                    <h4 class="card-title"><%= t('admin.trains.attributes.number') %>:</h4>
+                    <div class="form-group">
+                        <%= f.text_field :number %>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="card-title"><%= t('admin.trains.attributes.current_station') %>:</h4>
+                    <%= f.select :current_station_id, RailwayStation.all.map{ |station| [ "#{station.title}", station.id ] }, {}, class: "mdb-select colorful-select" %>
+                </div>
+                <div class="col-md-6">
+                <h4 class="card-title"><%= t('admin.trains.attributes.route') %>:</h4>
+                    <%= f.select :route_id, Route.all.map{ |route| [ "#{route.name}", route.id ] }, {}, class: "mdb-select colorful-select" %>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <%= f.check_box :order_from_tail %>
+                <%= f.label :order_from_tail %>
+            </div>
+            <div class="actions">
+                <button type="submit" class="btn btn-primary"><%= t('.submit', action: @train.new_record? ? 'Создать' : 'Изменить') %></button>
+            </div>
+        </div>
     </div>
-
-  <div class="actions">
-    <%= f.submit t('.submit', action: @train.new_record? ? 'Создать' : 'Изменить') %>
-  </div>
 <% end %>
