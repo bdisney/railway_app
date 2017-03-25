@@ -6,7 +6,7 @@
                 <div class="logo-wrapper sn-ad-avatar-wrapper">
                     <img src="https://mdbootstrap.com/images/avatars/img%20(9)" class="img-fluid rounded-circle">
                     <div class="rgba-stylish-strong">
-                        <p class="user white-text">Admin<br>admin@gmail.com</p>
+                        <p class="user white-text"><%= current_user.full_name %><br><%= current_user.email %></p>
                     </div>
                 </div>
             </li>
@@ -15,7 +15,7 @@
             <!-- Side navigation links -->
             <li>
                 <ul class="collapsible collapsible-accordion">
-                    <li><a class="collapsible-header waves-effect arrow-r active"><i class="fa fa-sitemap"></i> Resources<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li><a class="collapsible-header waves-effect arrow-r active"><i class="fa fa-sitemap"></i> <%= t('.resources') %><i class="fa fa-angle-down rotate-icon"></i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><%= link_to (admin_routes_path ) do %>

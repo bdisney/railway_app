@@ -27,55 +27,30 @@
      
    
 </head>
-<body>
-<div id="wrapper">
-  <header>
-      <%= render 'shared/nav_bar' %>
-  </header>
-  <main>
-      <div class="container">
-          <% unless flash.empty? %>
-              <script type="text/javascript">
-                  <% flash.each do |f| %>
-                      <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-                      toastr['<%= type %>']('<%= f[1] %>');
-                  <% end %>
-             </script>
-          <% end %>
-          <%= yield %>
-      </div>
-  </main>
-</div>
+<body class="fixed-sn grey-skin">
+    <div id="wrapper">
+        <header>
+            <% if current_user.present? && current_user.admin? %>
+                <%= render 'shared/sidebar' %>
+            <% end %>
 
+            <%= render 'shared/nav_bar' %>
 
-
-
-  <!-- SCRIPTS -->
-
-   <!-- JQuery -->
-    <%= javascript_include_tag 'jquery-3.1.1.js' %>
-
-    <!-- Tooltips -->
-     <%= javascript_include_tag 'tether.min.js' %>
-
-    <!-- Bootstrap core JavaScript -->
-    <%= javascript_include_tag 'bootstrap.min.js' %>
-
-    <!-- MDB core JavaScript -->
-    <%= javascript_include_tag 'mdb.min.js' %>
-
-     <script>
-        new WOW().init();
-    </script>
-
-    <script>
-        // Material Select Initialization
-        $(document).ready(function() {
-          $('.mdb-select').material_select();
-        });
-    </script>
-
-</body>
+        </header>
+        <main>
+            <div class="container">
+                <% unless flash.empty? %>
+                    <script type="text/javascript">
+                        <% flash.each do |f| %>
+                            <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+                            toastr['<%= type %>']('<%= f[1] %>');
+                        <% end %>
+                   </script>
+                <% end %>
+                <%= yield %>
+            </div>
+        </main>
+    </div>
 
 <!--Footer-->
 <footer class="page-footer blue-grey lighten-3 center-on-small-only">
@@ -113,6 +88,47 @@
 
 </footer>
 <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+
+   <!-- JQuery -->
+    <%= javascript_include_tag 'jquery-3.1.1.js' %>
+
+    <!-- Tooltips -->
+     <%= javascript_include_tag 'tether.min.js' %>
+
+    <!-- Bootstrap core JavaScript -->
+    <%= javascript_include_tag 'bootstrap.min.js' %>
+
+    <!-- MDB core JavaScript -->
+    <%= javascript_include_tag 'mdb.min.js' %>
+
+    <% if current_user.present? && current_user.admin? %>
+        <script>
+            // SideNav init
+            $(".button-collapse").sideNav();
+            var el = document.querySelector('.custom-scrollbar');
+            Ps.initialize(el);
+        </script>
+    <% end %>
+
+
+     <script>
+        new WOW().init();
+    </script>
+
+    <script>
+        // Material Select Initialization
+        $(document).ready(function() {
+          $('.mdb-select').material_select();
+        });
+    </script>
+
+
+
+</body>
+
+
 
 
 </html>

@@ -21,6 +21,7 @@ ru:
       log_out: "Выйти"
       sign_up: "Регистрация"
     sidebar:
+      resources: "Ресурсы"
       routes: "Маршруты"
       railway_stations: "Ж/Д Станции"
       trains: "Поезда"
