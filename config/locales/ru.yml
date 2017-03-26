@@ -32,6 +32,7 @@ ru:
         title: "Поезда"
       new:
         title: "Новый поезд"
+        add_new_train: "Добавить поезд"
       edit:
         title: "Изменить поезд"
       show:
@@ -46,6 +47,7 @@ ru:
         number: "Номер"
         route: "Маршрут"
         current_station: "Текущая станция"
+        type: "Тип вагона"
     railway_stations:
       index:
         title: "Станции"
@@ -94,6 +96,11 @@ ru:
         seat_type: "Тип места"
         train: "Номер поезда"
         number: "Номер вагона"
+        top_seats: "Верхние места"
+        side_top_seats: "Верхние боковые места"
+        bottom_seats: "Нижние места"
+        side_bottom_seats: "Нижние боковые места"
+        seats: "Места"
     tickets:
       index:
         title: "Список купленных билетов"
@@ -104,6 +111,8 @@ ru:
         start_station: "Станция отправления"
         end_station: "Станция прибытия"
         buyer: "Покупатель"
+        customer_name: "Имя пассажира"
+        passport_number: "Номер пасспорта"
   searches:
     show:
       title: "Поиск билетов"
@@ -117,9 +126,14 @@ ru:
   tickets:
     my:
       title: "Мои билеты"
+    show:
+      title: "Билет"
+      order_details: "Детали заказа"
+      customer_name: "Имя клиента"
+      ticket_details: "Информация о билете"
+      passenger_details: "Информация о пассажире"
     buy:
       title: "Купить билет"
-      
     attributes:
       sn: "Серийный номер"
       train: "Номер поезда"
@@ -128,4 +142,8 @@ ru:
       end_station: "Куда"
       arrival_time: "Время прибытия"
       departure_time: "Время отправления"
+      buyer: "Покупатель"
+      ticket_created_at: "Дата и время покупки билета"
+      passenger_name: "Имя пассажира"
+      passport_number: "Номер паспорта"
 
