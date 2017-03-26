@@ -12,7 +12,9 @@ class Route < ActiveRecord::Base
   private
 
   def set_name
-    self.name = "#{railway_stations.first.title} - #{railway_stations.last.title}"
+    if railway_stations.size > 1
+      self.name = "#{railway_stations.first.title} - #{railway_stations.last.title}"
+    end
   end
 
   def order_stations
