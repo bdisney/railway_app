@@ -1,21 +1,39 @@
-<h4><%= t('.title') %> №  <%= @carriage.number %></h4>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title') %><strong> <span class="text-muted">№ <%= @carriage.number %></span></strong>
+    </h2>
+</div>
 
-<p>
-  <strong><%= t('admin.carriages.attributes.train') %>:</strong>
-  <%= @carriage.train.number %>
-</p>
+<div class="card">
+    <h3 class="card-header primary-color white-text"><i class="" aria-hidden="true"></i> <%= t('.title') %> № <%= @carriage.number %>:</h3>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="card-text">
+                  <strong><span class="text-muted"><%= t('admin.carriages.attributes.train') %>:</span></strong>
+                  <%= @carriage.train.number %>
+                </p>
 
-<p>
-  <strong><%= t('admin.carriages.attributes.type') %>:</strong>
-  <%= @carriage.type_label %>
-</p>
+                <p>
+                  <strong><span class="text-muted"><%= t('admin.carriages.attributes.type') %>:</span></strong>
+                  <%= @carriage.type_label %>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    <strong><span class="text-muted"><%= t('.seats') %>:</span></strong>
+                    <div class="col-md-4">
+                        <%= render "seats_#{@carriage.type.underscore}", carriage: @carriage %>
+                    </div>
+                </p> 
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-  <strong><%= t('.seats') %>:</strong>
-  <div class="col-md-4">
-   <%= render "seats_#{@carriage.type.underscore}", carriage: @carriage %>
-  </div>
-</p>
+<br />
 
-<%= link_to t('shared.edit'), edit_admin_carriage_path(@carriage) %> |
-<%= link_to t('shared.back'), admin_train_path(@carriage.train) %>
+<%= link_to t('shared.edit'), edit_admin_carriage_path(@carriage), class: "text-danger" %> |
+<%= link_to t('shared.back'), admin_train_path(@carriage.train), class: "text-danger" %>

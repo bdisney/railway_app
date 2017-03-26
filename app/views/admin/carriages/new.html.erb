@@ -1,5 +1,9 @@
-<h1><%= t('.title') %></h1>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title') %><strong> <span class="text-muted"></span></strong>
+    </h2>
+</div>
 
 <%= render 'form', carriage: @carriage %>
-
-<%= link_to  t('shared.back'), admin_train_carriages_path %>
+<br/>
+<%= link_to  t('shared.back'), admin_train_carriages_path, class: "text-danger" %>

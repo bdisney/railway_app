@@ -1,30 +1,54 @@
+<%= render 'shared/errors_messages', resource: @carriage %>
+
 <%= form_for [:admin, @train, carriage.becomes(Carriage)] do |f| %>
-    <%= render 'shared/errors_messages', resource: @carriage %>
-
+<div class="card">
+    <h3 class="card-header primary-color white-text"><i class="" aria-hidden="true"></i> <%= t('.submit', action: @carriage.new_record? ? 'Создать' : 'Изменить') %>:</h3>
     <% f.object = @carriage.becomes(@carriage.class) %>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-6">
+                
+                <h4 class="card-title text-muted"><%= t('admin.trains.attributes.type') %>:</h4>
 
-    <div class="field">
-      
-      <%= f.select :type, Carriage.types, {}, {class: "mdb-select colorful-select dropdown-warning" } %>
+                <div class="form-group">
+                  
+                  <%= f.select :type, Carriage.types, {}, {class: "mdb-select colorful-select" } %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="card-title text-muted"><%= t('admin.carriages.attributes.top_seats') %>:</h4>
+                <%= f.text_field :top_seats %>
+            </div>
+            <div class="col-md-6">
+            <h4 class="card-title text-muted"><%= t('admin.carriages.attributes.side_top_seats') %>:</h4>
+                <%= f.text_field :side_top_seats %>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="card-title text-muted"><%= t('admin.carriages.attributes.bottom_seats') %>:</h4>
+                <%= f.text_field :bottom_seats %>
+            </div>
+            <div class="col-md-6">
+                <h4 class="card-title text-muted"><%= t('admin.carriages.attributes.side_bottom_seats') %>:</h4>
+                <%= f.text_field :side_bottom_seats %>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="card-title text-muted"><%= t('admin.carriages.attributes.seats') %>:</h4>
+                <%= f.text_field :seats %>
+                
+            </div>
+        </div>
+        <br />
+        <div class="actions">
+            <button type="submit" class="btn btn-primary"><%= t('.submit', action: carriage.new_record? ? 'Создать' : 'Изменить') %></button>
+        </div>
     </div>
-  
-      
-    <%= f.text_field :top_seats %>
-    <%= f.label :top_seats %>
-      
-    <%= f.text_field :bottom_seats %>
-    <%= f.label :bottom_seats %>
-
-    <%= f.text_field :side_top_seats %>
-    <%= f.label :side_top_seats %>
-
-    <%= f.text_field :side_bottom_seats %>
-    <%= f.label :side_bottom_seats %>
-      
-    <%= f.text_field :seats %>
-    <%= f.label :seats %>
-
-    <div class="actions">
-      <%= f.submit t('.submit', action: carriage.new_record? ? 'Создать' : 'Изменить') %>
-    </div>
+</div>
 <% end %>
