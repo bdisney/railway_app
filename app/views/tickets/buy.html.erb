@@ -1,48 +1,53 @@
 <%= render 'shared/errors_messages', resource: @ticket %>
 
-<h1><%= t('.title') %></h1>
-
-<h2>Information:</h2>
-<table class="table  table-hover">
-  <tbody>
-  <tr>
-    <th>Train Number:</th>
-    <td><%= @ticket.train.number %></td>
-  </tr>
-  <tr>
-    <th>Route:</th>
-    <td><%= @ticket.train.route.name %></td>
-  </tr>
-  <tr>
-    <th>Departing:</th>
-    <td><%= @ticket.start_station.title %></td>
-  </tr>
-  <tr>
-    <th>Destination:</th>
-    <td><%= @ticket.end_station.title %></td>
-  </tr>
-  </tbody>
-</table>
-
-<h2>Passenger details:</h2>
-<div>
-  <%= form_for(@ticket) do |f| %>
-      <%= f.hidden_field :train_id %>
-      <%= f.hidden_field :start_station_id %>
-      <%= f.hidden_field :end_station_id %>
-
-      <div class="field">
-        <%= f.label :passenger_name %>
-        <%= f.text_field :passenger_name %>
-      </div>
-
-      <div class="field">
-        <%= f.label :passport_number %>
-        <%= f.text_field :passport_number %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-  <% end%>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title') %><strong> <span class="text-muted"></span></strong>
+    </h2>
 </div>
+
+<div class="card">
+    <h3 class="card-header primary-color white-text"><i class="" aria-hidden="true"></i> <%= t('.title') %></h3>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="card-title"><%= t('tickets.attributes.route_information') %>:</h4>
+                <br />
+                <p class="card-text"><span class="text-muted"><%= t('tickets.attributes.train') %>:</span> <%= @ticket.train.number %></p>
+                <p class="card-text"><span class="text-muted"><%= t('tickets.attributes.route') %></span>: <%= @ticket.train.route.name %></p>
+                <p class="card-text"><span class="text-muted"><%= t('tickets.attributes.start_station') %></span>: <%= @ticket.start_station.title %></p>
+                <p class="card-text"><span class="text-muted"><%= t('tickets.attributes.end_station') %>: <%= @ticket.end_station.title %></span></p>
+            </div>
+            <div class="col-md-6">
+                <h4 class="card-title"><%= t('tickets.attributes.passenger_details') %>:</h4>
+                <div>
+                    <%= form_for(@ticket) do |f| %>
+                        <%= f.hidden_field :train_id %>
+                        <%= f.hidden_field :start_station_id %>
+                        <%= f.hidden_field :end_station_id %>
+
+                        <div class="md-form">
+                            <i class="fa fa-user prefix"></i>
+                            <textarea type="text" id="form8" class="md-textarea" value name="ticket[passenger_name]"></textarea>
+                            <label for="form8"><%= t('tickets.attributes.passenger_name')%></label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fa fa-book prefix"></i>
+                            <textarea type="text" id="form8" class="md-textarea" value name="ticket[passport_number]"></textarea>
+                            <label for="form8"><%= t('tickets.attributes.passport_number')%></label>
+                        </div>
+                    <% end%>
+                </div>
+            </div>
+        </div>
+        <div class="center-on-small-only">
+            <p class="text-right">
+                <button type="submit" class="btn btn-primary"><%= t('.buy') %></button>
+            </p>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<%= link_to t('shared.back'), :back, class: "text-danger" %>
