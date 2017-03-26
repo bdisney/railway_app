@@ -44,17 +44,23 @@
                 </tr>
             </thead>
             <tbody>
-                <% @train.ordered_carriages.each do |carriage| %>
+                <% if @train.carriages.empty? %>
                     <tr>
-                      <td><%= link_to carriage.number, admin_carriage_path(carriage) %></td>
-                      <td><%= carriage.type_label %></td>
-                      <td><%= render "admin/carriages/seats_#{carriage.type.underscore}", carriage: carriage %></td>
-                      <%= render 'shared/actions', links: {
-                                  show: admin_carriage_path(carriage),
-                                  edit: edit_admin_carriage_path(carriage),
-                                  delete: admin_carriage_path(carriage)
-                                  } %>
+                        <td colspan="4"><h2 class="text-muted"><%= t('shared.empty') %></h2></td>
                     </tr>
+                <% else %>
+                    <% @train.ordered_carriages.each do |carriage| %>
+                        <tr>
+                          <td><%= link_to carriage.number, admin_carriage_path(carriage) %></td>
+                          <td><%= carriage.type_label %></td>
+                          <td><%= render "admin/carriages/seats_#{carriage.type.underscore}", carriage: carriage %></td>
+                          <%= render 'shared/actions', links: {
+                                      show: admin_carriage_path(carriage),
+                                      edit: edit_admin_carriage_path(carriage),
+                                      delete: admin_carriage_path(carriage)
+                                      } %>
+                        </tr>
+                    <% end %>
                 <% end %>
             </tbody>
         </table>
@@ -70,6 +76,11 @@
                 </tr>
             </thead>
             <tbody>
+            <% if @train.carriages.empty? %>
+                <tr>
+                    <td colspan="3"><h2 class="text-muted"><%= t('shared.empty') %></h2></td>
+                </tr>
+            <% else %>
                 <% Carriage::TYPES.each do |carriage_type, carriage_label| %>
                     <% Carriage::SEATS_TYPES.each do |seats_type, seats_label| %>
                         <% count = @train.capacity_by_type(carriage_type, seats_type) %>
@@ -82,6 +93,7 @@
                         <% end %>
                     <% end %>
                 <% end %>
+            <% end %>
             </tbody>
         </table>
     </div>
