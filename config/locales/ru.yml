@@ -131,7 +131,6 @@ ru:
       order_details: "Детали заказа"
       customer_name: "Имя клиента"
       ticket_details: "Информация о билете"
-      passenger_details: "Информация о пассажире"
     buy:
       title: "Купить билет"
     attributes:
@@ -146,4 +145,6 @@ ru:
       ticket_created_at: "Дата и время покупки билета"
       passenger_name: "Имя пассажира"
       passport_number: "Номер паспорта"
+      route_information: "Маршрутная информация"
+      passenger_details: "Информация о пассажире"
 

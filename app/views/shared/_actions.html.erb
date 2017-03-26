@@ -1,11 +1,17 @@
 <td class="">
-  <%= link_to(links[:show], data: {toggle: 'tooltip', title: t('shared.show')}) do %>
-      <i class="fa fa-eye"></i>
-  <% end %>
-  <%= link_to(links[:edit], data: {toggle: 'tooltip', title: t('shared.edit')}) do %>
-      <span class="green-text"><i class="fa fa-pencil"></i></span>
-  <% end %>
-  <%= link_to(links[:delete], method: :delete, data: {toggle: 'tooltip', title: t('shared.destroy'), confirm: t('shared.confirm')}) do %>
-      <span class="red-text"><i class="fa fa-times"></i></span>
-  <% end %>
+    <% if links.key?(:show) %>
+        <%= link_to(links[:show], data: {toggle: 'tooltip', title: t('shared.show')}) do %>
+            <i class="fa fa-eye"></i>
+        <% end %>
+    <% end %>
+    <% if links.key?(:edit) %>
+        <%= link_to(links[:edit], data: {toggle: 'tooltip', title: t('shared.edit')}) do %>
+              <span class="green-text"><i class="fa fa-pencil"></i></span>
+        <% end %>
+    <% end %>
+    <% if links.key?(:delete) %>
+        <%= link_to(links[:delete], method: :delete, data: {toggle: 'tooltip', title: t('shared.destroy'), confirm: t('shared.confirm')}) do %>
+              <span class="red-text"><i class="fa fa-times"></i></span>
+        <% end %>
+    <% end %>
 </td> 
