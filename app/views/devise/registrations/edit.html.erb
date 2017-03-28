@@ -1,43 +1,68 @@
-<h2><%= t('.title', resource: resource_class.model_name.human) %></h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title', resource: resource_class.model_name.human) %><strong> <span class="text-muted"></span></strong>
+    </h2>
+</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<div class="card">
+    <h3 class="card-header primary-color white-text"><i class="fa fa-user" aria-hidden="true"></i> <%= current_user.full_name %>:</h3>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
-  <% end %>
+    <div class="card-block">
 
-  <div class="field">
-    <%= f.label :password %> <i>( t('.leave_blank_if_you_don_t_want_to_change_it') )</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em>(<%= t('.min_length') %> <%= @minimum_password_length %>)</em>
-    <% end %>
-  </div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          
+          <div class="col-md-6">
+            <div class="md-form">
+                <i class="fa fa-envelope prefix"></i>
+                <%= f.email_field :email, autofocus: true, class: "form-control", id: "form2" %>
+                <label for="form2"> Email</label>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
+          <% end %>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+          <div class="col-md-6">
+              <div class="md-form">
+                  <i class="fa  fa-eye-slash prefix"></i>
+                  <%= f.password_field :password, autocomplete: "off" %>
+                  <%= f.label :password %> <i><span class="text-muted">(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</span></i><br />
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="md-form">
+                <i class="fa  fa-eye-slash prefix invisible"></i>
+                <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                <%= f.label :password_confirmation %><br />
+              </div>
+          </div>
 
-  <div class="actions">
-    <%= f.submit t('.update') %>
-  </div>
-<% end %>
+          <div class="col-md-6">
+              <div class="md-form">
+                  <i class="fa  fa-eye-slash prefix invisible"></i>
+                  <%= f.password_field :current_password, autocomplete: "off" %>
+                  <%= f.label :current_password %> <br />
+              </div>
+          </div>
 
-<h3><%= t('.cancel_my_account') %></h3>
+          <br />
 
-<p><%= t('.unhappy') %> <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+          <div class="actions">
+              <button type="submit" class="btn btn-primary"><%= t('.update') %></button>
+          </div>
 
-<%= link_to  t('devise.shared.links.back'), :back %>
+        <% end %>
+        <hr>
+
+        <h3 class="text-muted"><%= t('.cancel_my_account') %></h3>
+
+        <p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    </div>
+</div>
+
+<br />
+
+<%= link_to  t('devise.shared.links.back'), :back, class: "text-danger" %>
