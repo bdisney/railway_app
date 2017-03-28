@@ -10,11 +10,11 @@
 
     <!--Panel-->
     <div class="card">
-        <h3 class="card-header primary-color white-text"><i class="fa fa-ticket" aria-hidden="true"></i> Ticket # <%= @ticket.serial_number %></h3>
+        <h3 class="card-header primary-color white-text"><i class="fa fa-ticket" aria-hidden="true"></i> <%= t('tickets.show.title') %> № <%= @ticket.serial_number %></h3>
         <div class="card-block">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="card-title">Please, select departure station:</h4>
+                    <h4 class="card-title"><%= t('tickets.attributes.start_station') %>:</h4>
                     <div class="form-group">
                         <%= f.collection_select :start_station_id, @ticket.train.route.railway_stations, :id, :title, {}, { class: "mdb-select colorful-select" } %>
                     </div>
@@ -22,7 +22,7 @@
            
 
                 <div class="col-md-6">
-                    <h4 class="card-title">Please, select arrival station:</h4>
+                    <h4 class="card-title"><%= t('tickets.attributes.end_station') %>:</h4>
                     <div class="form-group">
                         <%= f.collection_select :end_station_id, @ticket.train.route.railway_stations, :id, :title, {}, { class: "mdb-select colorful-select" } %>
                     </div>
@@ -30,20 +30,20 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="card-title"><%= t('admin.tickets.attributes.customer_name') %>:</h4>
+                    <h4 class="card-title"><%= t('tickets.attributes.passenger_name') %>:</h4>
                     <div class="form-group">
                         <%= f.text_field :passenger_name %>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h4 class="card-title"><%= t('admin.tickets.attributes.passport_number') %>:</h4>
+                    <h4 class="card-title"><%= t('tickets.attributes.passport_number') %>:</h4>
                     <div class="form-group">
                         <%= f.text_field :passport_number %>
                     </div>
                 </div>
             </div>
 
-            <p class="card-text">Ticket was created by <span><%= @ticket.user.full_name %></span> at <span> <%= @ticket.created_at.strftime '%d.%m.%Y, %H:%M' %></span></p>
+            <p class="card-text"><%= t('tickets.attributes.ticket_created_at') %>: <%= @ticket.created_at.strftime '%d.%m.%Y, %H:%M' %></span></p>
             <button type="submit" class="btn btn-primary"><%= t('.submit') %></button>
         </div>
     </div>
@@ -52,6 +52,6 @@
 <br />
 
 <p class="nav-inner">
-  <%= link_to t('shared.back'), admin_tickets_path %>
+  <%= link_to t('shared.back'), admin_tickets_path, class: "text-danger" %>
 </p>
 

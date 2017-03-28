@@ -1,4 +1,5 @@
 ru:
+  permission_denied: "Доступ запрещен!"
   shared:
     back: "Назад"
     add: "Добавить"
@@ -10,7 +11,7 @@ ru:
     empty: "Нет записей"
     not_set:
       f: "Не указана"
-      m: "Не указано"
+      m: "Не указан"
       many: "Не указаны"
     count: "Количество"
     actions: "Действия"
@@ -41,6 +42,12 @@ ru:
         carriages: "Вагоны"
         seats_count_by_type: "Количество мест по типу"
         seats: "Места"
+      create:
+        notice: "Поезд успешно добавлен!"
+      update: 
+        notice: "Поезд обновлен!"
+      destroy:
+        notice: "Поезд удален!"
       form:
         submit: "%{action} поезд"
       attributes:
@@ -57,6 +64,15 @@ ru:
         title: "Редактировать станцию"
       show:
         title: "Станция"
+      create:
+        notice: "Станция успешно добавлена!"
+      update:
+        notice: "Станция обновлена!"
+      destroy:
+        notice: "Станция удалена!"
+      update_station_place_in_route:
+        notice: "Станция в маршруте обновлена!"
+        alert: "Обновление не произошло, проверьте лог!"
       form:
         submit: "%{action} станцию"
       attributes:
@@ -74,6 +90,12 @@ ru:
         title: "Редактировать маршрут"
       show:
         title: "Маршрут"
+      create:
+        notice: "Маршрут успешно добавлен!"
+      update:
+        notice: "Маршрут успешно обновлен!"
+      destroy:
+        notice: "Маршрут удален."
       form:
         submit: "%{action} маршрут"
       attributes:
@@ -89,6 +111,13 @@ ru:
       show:
         title: "Вагон"
         seats: "Места"
+      create:
+        notice: "Вагон добавлен!"
+        alert: "Неизвестный тип вагона!"
+      update: 
+        notice: "Вагон обновлен!"
+      destroy:
+        notice: "Вагон удален."
       form:
         submit: "%{action} вагон"
       attributes:
@@ -104,15 +133,13 @@ ru:
     tickets:
       index:
         title: "Список купленных билетов"
-      attributes:
-        sn: "Серийный номер"
-        train: "Номер поезда"
-        route: "Маршрут"
-        start_station: "Станция отправления"
-        end_station: "Станция прибытия"
-        buyer: "Покупатель"
-        customer_name: "Имя пассажира"
-        passport_number: "Номер пасспорта"
+      edit:
+        title: "Редактировать билет"
+        submit: "Сохранить"
+      update:
+        notice: "Изменения сохранены!"
+      destroy:
+        notice: "Билет удален."
   searches:
     show:
       title: "Поиск билетов"
@@ -133,6 +160,11 @@ ru:
       ticket_details: "Информация о билете"
     buy:
       title: "Купить билет"
+      buy: "Купить"
+    create: 
+      notice: "Спасибо за заказ!"
+    destroy:
+      notice: "Заказ удален."
     attributes:
       sn: "Серийный номер"
       train: "Номер поезда"

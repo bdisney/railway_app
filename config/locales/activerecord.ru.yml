@@ -18,6 +18,8 @@ ru:
         name: "Название"
         railway_station_ids: "Станции"
       ticket:
+        start_station: "Откуда"
+        end_station: "Куда"
         passenger_name: "Имя пассажира"
         passport_number: "Номер паспорта"
       train:
