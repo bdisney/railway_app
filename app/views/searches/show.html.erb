@@ -1,31 +1,49 @@
-<h4><%= t('.title') %></h4>
+<%= render 'shared/errors_messages', resource: @search %>
 
-<%= form_for(@search, method: :post, url: search_path) do |f| %>
-    <%= render 'shared/errors_messages', resource: @search %>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title') %><strong> <span class="text-muted"></span></strong>
+    </h2>
+</div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <%= f.label :start_station_id %>
-            <%= f.collection_select :start_station_id, RailwayStation.all.ordered_by_title, :id, :title, {}, { class: "mdb-select colorful-select dropdown-warning" } %>
-        </div>
+<div class="card">
+    <h3 class="card-header primary-color white-text"><i class="fa fa-ticket" aria-hidden="true"></i> <%= t('.title') %>:</h3>
+    
+    <div class="card-block">
 
-        <div class="col-md-6">
-            <%= f.label :end_station_id %>
-            <%= f.collection_select :end_station_id, RailwayStation.all.ordered_by_title, :id, :title, {}, { class: "mdb-select colorful-select dropdown-warning" } %>
-        </div>
+        <%= form_for(@search, method: :post, url: search_path) do |f| %>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="card-title"><span class="text-muted"><%= t('tickets.attributes.start_station') %>: </span></h4>
+                    <%= f.collection_select :start_station_id, RailwayStation.all.ordered_by_title, :id, :title, {}, { class: "mdb-select colorful-select dropdown-warning" } %>
+                </div>
+
+                <div class="col-md-6">
+                    <h4 class="card-title"><span class="text-muted"><%= t('tickets.attributes.end_station') %>: </span></h4>
+                    <%= f.collection_select :end_station_id, RailwayStation.all.ordered_by_title, :id, :title, {}, { class: "mdb-select colorful-select" } %>
+                </div>
+            </div>
+
+            <div class="center-on-small-only">
+                <button type="submit" class="btn btn-primary"><%= t('.submit') %></button>
+            </div>
+        <% end %>
     </div>
-
-    <div class="actions">
-        <%= submit_tag t('.submit') %>
-    </div>
-<% end %>
+</div>
+<br>
 
 <% if @search.result %>
     <% if @search.result.empty? %>
         <p><%= t('.empty') %></p>
     <% else %>
+<hr>
+<br>
+<div class="card">
+    <h3 class="card-header primary-color white-text"><i class="fa fa-search" aria-hidden="true"></i> <%= t('.search_results') %>:</h3>
+    
+    <div class="card-block">
         <table class="table text-center table-hover">
-            <thead class="table-inverse text-center">
+            <thead class="text-center">
                 <tr>
                     <th class="text-center"><%= t('tickets.attributes.train') %></th>
                     <th class="text-center"><%= t('tickets.attributes.route') %></th>
@@ -46,7 +64,7 @@
                                 <%= hidden_field_tag :train_id, train.id %>
                                 <%= hidden_field_tag :start_station_id, @search.start_station_id %>
                                 <%= hidden_field_tag :end_station_id, @search.end_station_id %>
-                                <%= submit_tag t('.buy') %>
+                                <button type="submit" class="btn btn-success"><%= t('.buy') %></button>
                             <% end %>
                         </td>
                     </tr>

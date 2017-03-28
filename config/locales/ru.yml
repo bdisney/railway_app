@@ -153,6 +153,7 @@ ru:
   tickets:
     my:
       title: "Мои билеты"
+      no_record: "Записей нет"
     show:
       title: "Билет"
       order_details: "Детали заказа"
