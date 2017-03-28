@@ -181,4 +181,18 @@ ru:
       passport_number: "Номер паспорта"
       route_information: "Маршрутная информация"
       passenger_details: "Информация о пассажире"
+  tickets_mailer:
+    buy_ticket:
+      subject: "Информация о приобретенном билете"
+      greeting: "Здравствуйте, %{recipient}!"
+      thank_you: "Спасибо за Ваш заказ!"
+      order_details: "Детали Вашего заказа:"
+      ticket_details: "Информация о билете"
+      passenger_data: "Данные пассажира"
+      view: "Посмотреть заказ"
+    cancel_ticket:
+      subject: "Отмена заказа"
+      greeting: "Здравствуйте, %{recipient}!"
+      message: "Вы только что отменили бронь билета с номером %{serial_number}."
+
 
