@@ -19,7 +19,7 @@ class Search
     @start_station = RailwayStation.find(start_station_id)
     @end_station = RailwayStation.find(end_station_id)
 
-    if self.valid?
+    if valid?
       @result = Train.includes(route: :railway_stations).where(railway_stations: { id: start_station_id }) &
           Train.includes(route: :railway_stations).where(railway_stations: { id: end_station_id })
     end

@@ -1,9 +1,9 @@
 class Carriage < ActiveRecord::Base
   self.inheritance_column = :foo
 
-  TYPES = { CoupeCarriage: 'Coupe', EconomyCarriage: 'Economy', BusinessCarriage: 'Business - Class', SittingCarriage: 'Sitting' }
+  TYPES = { CoupeCarriage: 'Coupe', EconomyCarriage: 'Economy', BusinessCarriage: 'Business - Class', SittingCarriage: 'Sitting' }.freeze
   SEATS_TYPES = { bottom_seats: 'Bottom', top_seats: 'Top', side_bottom_seats: 'Side bottom',
-                  side_top_seats: 'Side top', seats: 'Seats' }
+                  side_top_seats: 'Side top', seats: 'Seats' }.freeze
   belongs_to :train
   
   validates :train_id, presence: true

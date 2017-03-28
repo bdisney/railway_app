@@ -13,7 +13,7 @@ class TicketsController < ApplicationController
     @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save
-      redirect_to my_tickets_path, notice: t('.notice')
+      redirect_to root_path, notice: t('.notice')
     else
       render :buy
     end

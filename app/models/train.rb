@@ -11,6 +11,6 @@ class Train < ActiveRecord::Base
   end
 
   def ordered_carriages
-    self.order_from_tail ? carriages.ordered.reverse_order : carriages.ordered
+    order_from_tail ? carriages.ordered.reverse_order : carriages.ordered
   end
 end
