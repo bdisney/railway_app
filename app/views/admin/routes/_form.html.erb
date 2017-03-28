@@ -1,11 +1,19 @@
+<%= render 'shared/errors_messages', resource: @route %>
+
 <%= form_for [:admin, @route] do |f| %>
-  <%= render 'shared/errors_messages', resource: @route %>
+  
+<div class="card">
+    <h3 class="card-header primary-color white-text"><i class="fa fa-road" aria-hidden="true"></i> </h3>
 
-  <br/>
-  <%= f.collection_select :railway_station_ids, RailwayStation.all.ordered_by_title, :id, :title, {}, { multiple: true, class: "mdb-select colorful-select dropdown-warning" } %>
+    <div class="card-block">
+        <div class="col-md-6">
+            <%= f.collection_select :railway_station_ids, RailwayStation.all.ordered_by_title, :id, :title, {}, { multiple: true, class: "mdb-select colorful-select " } %>
 
-<div class="actions">
-    <%= f.submit t('.submit', action: @route.new_record? ? 'Создать' : 'Изменить') %>
-  </div>
+            <div class="center-on-small-only">
+                <button type="submit" class="btn btn-primary"><%= t('.submit', action: @route.new_record? ? 'Создать' : 'Изменить') %></button>
+            </div>
+        </div>
+    </div>
+</div>
 <% end %>
 

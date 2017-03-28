@@ -1,6 +1,12 @@
-<h1><%= t('.title') %></h1>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title') %> <strong> <span class="text-muted"></span></strong>
+    </h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to t('shared.show'), admin_route_path(@route) %> |
-<%= link_to t('shared.back'), admin_routes_path %>
+<br>
+
+<%= link_to t('shared.back'), admin_routes_path, class: "text-danger" %> |
+<%= link_to t('shared.show'), admin_route_path(@route), class: "text-danger" %> 
