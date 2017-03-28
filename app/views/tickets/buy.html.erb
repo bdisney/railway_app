@@ -36,7 +36,7 @@
                             <textarea type="text" id="form8" class="md-textarea" value name="ticket[passport_number]"></textarea>
                             <label for="form8"><%= t('tickets.attributes.passport_number')%></label>
                         </div>
-                    <% end%>
+                    
                 </div>
             </div>
         </div>
@@ -45,9 +45,10 @@
                 <button type="submit" class="btn btn-primary"><%= t('.buy') %></button>
             </p>
         </div>
+        <% end%>
     </div>
 </div>
 
 <br />
 
-<%= link_to t('shared.back'), :back, class: "text-danger" %>
+<%= link_to t('shared.back'), search_path, class: "text-danger" %>
