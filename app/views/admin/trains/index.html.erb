@@ -1,24 +1,39 @@
-<h1><%= t('.title') %></h1>
-
-<div class="row">
-  <div class="col-md-12">
-    <%= link_to t('shared.add'), new_admin_train_path,
-                class: '', role: 'button' %>
-  </div>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('.title') %><strong> <span class="text-muted"></span></strong>
+    </h2>
 </div>
 
-<table class="table text-center table-hover">
-  <thead class="table-inverse text-center">
-    <tr>
-      <th class="text-center"><%= t('admin.trains.attributes.number') %></th>
-      <th class="text-center"><%= t('admin.trains.attributes.route') %></th>
-      <th class="text-center"><%= t('admin.trains.attributes.current_station') %></th>
-      <th class="text-center"><%= t('shared.actions') %></th>
-    </tr>
-  </thead>
+<div class="card">
+    <h3 class="card-header primary-color white-text"><i class="fa fa-bank" aria-hidden="true"></i> <%= t('.title') %>:</h3>
 
-  <tbody>
-    <%= render @trains %>
-  </tbody>
-</table>
+    <div class="card-block">
+
+        <div class="row">
+            <div class="col-md-12">
+                 <p class="text-right">
+                      <span class=""> <%= link_to t('admin.trains.new.add_new_train'), new_admin_train_path,
+                          class: 'btn btn-secondary', role: 'button' %>
+                      </span>
+                  </p>
+            </div>
+        </div>
+
+        <table class="table text-center table-hover">
+            <thead class="text-center">
+                <tr>
+                    <th class="text-center"><%= t('admin.trains.attributes.number') %></th>
+                    <th class="text-center"><%= t('admin.trains.attributes.route') %></th>
+                    <th class="text-center"><%= t('admin.trains.attributes.current_station') %></th>
+                    <th class="text-center"><%= t('shared.actions') %></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <%= render @trains %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
