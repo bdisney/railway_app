@@ -1,57 +1,72 @@
-<h1>Your Tciket Order Details</h1>
-
-<p>Order time: <%= @ticket.created_at.strftime '%d.%m.%Y, %H:%M' %></p>
-
-<div class="row">
-    <div class="col-md-6">
-        <h2>Information:</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <th>Ticket Number:</th>
-                    <td><%= @ticket.serial_number %></td>
-                </tr>
-                <tr>
-                    <th>Train Number:</th>
-                    <td><%= @ticket.train.number %></td>
-                </tr>
-                <tr>
-                    <th>Route:</th>
-                    <td><%= @ticket.train.route.name %></td>
-                </tr>
-                <tr>
-                    <th>Departing:</th>
-                    <td>
-                      <%= @ticket.start_station.title %>
-                      (at <%= @ticket.start_station.within_route(@ticket.train.route, :departure_time) %>)
-                    </td>
-                </tr>
-                <tr>
-                    <th>Destination:</th>
-                    <td>
-                      <%= @ticket.end_station.title %>
-                      (at <%= @ticket.end_station.within_route(@ticket.train.route, :arrival_time) %>)
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="col-md-6">
-        <h2>Passenger details:</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <th>Passenger name:</th>
-                    <td><%= @ticket.passenger_name %></td>
-                </tr>
-                <tr>
-                    <th>Passport number:</th>
-                    <td><%= @ticket.passport_number %></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="divider-new">
+    <h2 class="h2-responsive">
+        <%= t('tickets.show.title') %><strong> <span class="text-muted"></span></strong>
+    </h2>
 </div>
 
-<%= link_to 'Back to search', search_path %> 
+<div class="card">
+<h3 class="card-header primary-color white-text"><i class="fa fa-ticket" aria-hidden="true"></i> <%= t('tickets.show.title') %> № <%= @ticket.serial_number %></h3>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="card-title"><%= t('tickets.show.order_details') %>:</h4>
+                <p class="card-text"><%= t('tickets.show.customer_name') %>: <span class="text-muted"><%= @ticket.user.full_name %></span></p>
+                <p class="card-text"><%= t('tickets.attributes.ticket_created_at') %>: <span class="text-muted"><%= @ticket.created_at.strftime '%d.%m.%Y, %H:%M' %></span> </p>
+            </div>
+        </div>
+        <hr>
+        <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="card-title"><%= t('tickets.show.ticket_details') %>:</h4>
+                <hr>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th class="text-muted"><%= t('tickets.attributes.train') %>:</th>
+                            <td><%= @ticket.train.number %></td>
+                        </tr>
+                        <tr>
+                            <th class="text-muted"><%= t('tickets.attributes.route') %>:</th>
+                            <td><%= @ticket.train.route.name %></td>
+                        </tr>
+                        <tr>
+                            <th class="text-muted"><%= t('tickets.attributes.start_station') %>:</th>
+                            <td>
+                                <%= @ticket.start_station.title %>
+                                (at <%= @ticket.start_station.within_route(@ticket.train.route, :departure_time) %>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-muted"><%= t('tickets.attributes.end_station') %>:</th>
+                            <td>
+                                <%= @ticket.end_station.title %>
+                                (at <%= @ticket.end_station.within_route(@ticket.train.route, :arrival_time) %>)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h4 class="card-title"><%= t('tickets.attributes.passenger_details') %>:</h4>
+                <hr>
+                <table class="">
+                    <tbody>
+                        <tr>
+                            <th class="text-muted"><%= t('tickets.attributes.passenger_name') %>:</th>
+                            <td><%= @ticket.passenger_name %></td>
+                        </tr>
+                        <tr>
+                            <th class="text-muted"><%= t('tickets.attributes.passport_number') %>:</th>
+                            <td><%= @ticket.passport_number %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<%= link_to t('shared.back'), search_path, class: "text-danger" %>
+
