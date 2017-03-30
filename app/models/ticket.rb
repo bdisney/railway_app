@@ -11,7 +11,6 @@ class Ticket < ActiveRecord::Base
   before_validation :gen_serial_number, on: :create
 
   after_create :send_buy_notification
-  before_destroy :store_ticket_data
   after_destroy :send_cancel_notification
 
   private
@@ -29,6 +28,6 @@ class Ticket < ActiveRecord::Base
   end
 
   def send_cancel_notification
-    TicketsMailer.cancel_ticket(@ticket_data).deliver_now
+    TicketsMailer.cancel_ticket(self).deliver_now
   end
 end
