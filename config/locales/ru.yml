@@ -1,5 +1,9 @@
 ru:
   permission_denied: "Доступ запрещен!"
+  layouts:
+    application:
+      home_page: "На главную"
+      profile: "Профиль"
   shared:
     back: "Назад"
     add: "Добавить"
@@ -17,6 +21,7 @@ ru:
     actions: "Действия"
     nav_bar: 
       my_tickets: "Мои билеты"
+      home_page: "На главную"
       dashboard: "Панель админа"
       log_in: "Войти"
       log_out: "Выйти"
