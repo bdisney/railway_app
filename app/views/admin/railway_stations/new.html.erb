@@ -4,23 +4,8 @@
     </h2>
 </div>
 
-<%= render 'shared/errors_messages', resource: @railway_station %>
+<%= render 'form' %>
 
-<div class="row">
-  <div class="col-sm-6">
-    <%= form_for [:admin, @railway_station] do |f| %>
-      
-        <div class="form-group">
-          <%= f.label :title %>
-          <%= f.text_field :title, class: 'form-control' %>
-        </div>
-
-
-        <div class="center-on-small-only">
-            <button type="submit" class="btn btn-primary"><%= t('.submit') %></button>
-        </div>
-    <% end %>
-  </div>
-</div>
+<br>
 
 <%= link_to t('shared.back'), admin_railway_stations_path, class: "text-danger" %>

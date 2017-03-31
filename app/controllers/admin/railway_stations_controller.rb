@@ -27,9 +27,9 @@ class Admin::RailwayStationsController < Admin::BaseController
 
   def update
     if @railway_station.update(railway_station_params)
-      render json: @railway_station, status: :ok
+      redirect_to admin_railway_station_path(@railway_station), notice: t('.notice')
     else
-      render json: @railway_station.errors, status: :unprocessable_entity
+      render :edit
     end
   end
 
