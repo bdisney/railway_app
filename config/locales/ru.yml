@@ -66,6 +66,7 @@ ru:
       new:
         title: "Новая станция"
         name: "Название"
+        submit: "Создать станцию"
       edit:
         title: "Редактировать станцию"
       show:
@@ -79,8 +80,9 @@ ru:
       update_station_place_in_route:
         notice: "Станция в маршруте обновлена!"
         alert: "Обновление не произошло, проверьте лог!"
-      form:
-        submit: "%{action} станцию"
+      form_inline:
+        submit: "Изменить станцию"
+        cancel: "Отмена"
       attributes:
         title: "Наименование"
         position: "Позиция в маршруте"
