@@ -28,6 +28,6 @@ class Search
   private
 
   def stations_differences
-    errors.add(:base, 'Departure station and arrival station must be different.') if start_station_id == end_station_id
+    errors.add(:base, 'Станции отправления и прибытия должны отличаться.') if start_station_id == end_station_id
   end
 end
