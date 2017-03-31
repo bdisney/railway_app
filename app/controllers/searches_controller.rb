@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+skip_before_action :authenticate_user!
+
   def show
     @search ||= Search.new
   end
